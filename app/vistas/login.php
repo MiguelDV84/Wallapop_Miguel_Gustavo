@@ -65,6 +65,8 @@ https://templatemo.com/tm-556-catalog-z
 
                     <div class="form-group tm-text-right">
                         <button type="submit" value="login" class="btn btn-primary">Send</button>
+                        <a href="registro.php" style="color: #009999;">¿Aún no estas registrado?, registrate.</a>
+
                     </div>
                 </form>                
             </div>

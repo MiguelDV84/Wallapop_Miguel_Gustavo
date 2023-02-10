@@ -81,7 +81,6 @@ https://templatemo.com/tm-556-catalog-z
 
                     <div class="form-group tm-text-right">
                         <button type="submit" value="registro" class="btn btn-primary">Registrarse</button>
-                        <a href="login.php" style="color: #009999;">¿Tienes cuenta?, inicia sesión</a>
                     </div>
                 </form>                
             </div>

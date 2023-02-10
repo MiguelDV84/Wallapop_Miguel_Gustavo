@@ -49,7 +49,7 @@ $array_anuncios = $anuncioDAO->getAnuncios();
                             <a class="nav-link nav-link-2" href="app/vistas/subirAnuncio.php">Mis Anuncios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link nav-link-3" href="app/vistas/registro.php">Login/Registro</a>
+                            <a class="nav-link nav-link-3" href="app/vistas/login.php">Login/Registro</a>
                         </li>
                     </ul>
                 </div>
