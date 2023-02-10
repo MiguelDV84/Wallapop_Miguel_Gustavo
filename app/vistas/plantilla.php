@@ -7,7 +7,20 @@
         <link rel="stylesheet" href="web/css/bootstrap.minCopia.css">
         <link rel="stylesheet" href="web/fontawesome/css/all.min.css">
         <link rel="stylesheet" href="web/css/templatemo-style.css">
+        <style>
+            #fotoUsuario{
+                width: 40px;
+                height: 40px;
+                background-position: center;
+                background-size: cover;
+                display: inline-block;
+                border-radius: 30px;
+                position: relative;
+                top: 10px;
+                border: 1px solid #999;
+            }
 
+        </style>
     </head>
     <body>
         <!-- Page Loader -->

@@ -16,9 +16,9 @@
             Últimos anuncios
         </h2>
         <?php if (isset($_SESSION['email'])): ?>
-            <!-- <img src="imagenes/<?= $_SESSION['foto'] ?>" height="40">  -->
+             
             <!--<div style="background-image:url('web/imagenes/<?= $_SESSION['foto'] ?>')" id='fotoUsuario'></div>-->
-            <strong>¡Bienvenid@ <?= $_SESSION['email'] ?>!</strong>
+            <strong>¡Bienvenid@ <?= $_SESSION['email'] ?>!     <div style="background-image:url('web/img/<?= $_SESSION['foto'] ?>')" id='fotoUsuario'></div></strong>
             
         <?php endif; ?>
     </div>

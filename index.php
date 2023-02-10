@@ -47,7 +47,7 @@ if (!isset($_SESSION['idUsuario']) && isset($_COOKIE['uid'])) {
         //Iniciamos sesión
         $_SESSION['email'] = $usuario->getEmail();
         $_SESSION['idUsuario'] = $usuario->getId();
-        
+        $_SESSION['foto'] = $usuario->getFoto();
         //Renovamos la cookie otra semana
         setcookie("uid", $uid, time() + 7 * 24 * 60 * 60);
     }
