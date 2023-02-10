@@ -42,4 +42,31 @@ class UsuarioDAO
         return $usuario;
 
     }
+    
+    public function actualizar(Usuario $u) {
+        $sql = "UPDATE usuarios SET email = ?, uid = ? "
+                . "WHERE id = ?";
+        if (!$stmt = $this->conn->prepare($sql)) {
+            die("Error al preparar la sentencia: " . $this->conn->error);
+        }
+        $id = $u->getId();
+        $email = $u->getEmail();
+        $uid = $u->getUid();
+        $stmt->bind_param('ssi', $email, $uid, $id);
+        $stmt->execute();
+    }
+    
+    public function obtenerPorUid($uid) {
+        $sql = "SELECT * FROM usuarios WHERE uid = ?";
+        if (!$stmt = $this->conn->prepare($sql)) {
+            die("Error al preparar la sentencia: " . $this->conn->error);
+        }
+        $stmt->bind_param('s', $uid);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $usuario = $result->fetch_object('Usuario');
+        //Para que netbeans reconozca el objeto de la clase Usuario  
+        return $usuario;
+    }
 }

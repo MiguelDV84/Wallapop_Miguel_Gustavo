@@ -71,9 +71,14 @@ class UsuariosController
                 //Datos correctos
                 $_SESSION['email'] = $usuario->getEmail();
                 $_SESSION['idUsuario'] = $usuario->getId();
-                $_SESSION['nombre'] = $usuario->getNombre();
-                $_SESSION['telefono'] = $usuario->getTelefono();
-                $_SESSION['poblacion'] = $usuario->getPoblacion();
+                //Guardado de cookie. Generamos un uid aleatorio y lo guardamos en la BD y en la cookie
+            $uid = sha1(time() + rand()) . md5(time());
+            $usuario->setUid($uid);
+            $usuarioDAO->actualizar($usuario);
+            setcookie("uid", $uid, time() + 7 * 24 * 60 * 60);
+            
+            header("Location: index.php");
+            die();
             }
         }else{
             require 'app/vistas/login.php';

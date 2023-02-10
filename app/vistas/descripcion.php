@@ -16,7 +16,7 @@ require 'app/vistas/plantilla.php';
                 <div class="carousel-inner">
                     <?php foreach ($arrayfotos as $foto): ?>
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="web/img/<?= $foto->foto ?>" alt="First slide">
+                        <img class="d-block w-100" src="web/img/<?= $foto->getFoto() ; ?>" alt="First slide">
                     </div>
                     <?php endforeach; ?>
                 </div>

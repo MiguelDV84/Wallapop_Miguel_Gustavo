@@ -16,7 +16,8 @@ $map = array(
     "login" => array("controller" =>  "UsuariosController", "method" => "login", "publica" => true),
     "registro" => array("controller" =>  "UsuariosController", "method" => "registrar", "publica" => true),
     "inicio" => array("controller" => "AnunciosController", "method" => "inicio", "publica" => true), 
-    "descripcion" => array("controller" => "AnunciosController", "method" => "descripcion", "publica" => true)
+    "descripcion" => array("controller" => "AnunciosController", "method" => "descripcion", "publica" => true),
+    "logout" => array("controller" => "UsuariosController", "method" => "logout", "publica" => true),
 );
 
 /* PARSEO DE LA RUTA */
@@ -29,6 +30,26 @@ if (!isset($_GET['action'])) {    //Si no existe el parámetro GET action como i
         die();
     } else {
         $action = filter_var($_GET['action'], FILTER_SANITIZE_SPECIAL_CHARS);
+    }
+}
+/* RECORDAR USUARIO CUANDO CIERRE EL NAVEGADOR MEDIANTE COOKIES */
+/* Si tiene cookie y no tiene sesión iniciada la iniciaremos */
+if (!isset($_SESSION['idUsuario']) && isset($_COOKIE['uid'])) {
+    //Obtenemos el usuario de la BD
+    $uid = filter_var($_COOKIE['uid'], FILTER_SANITIZE_STRING);
+    $usuarioDAO = new UsuarioDAO(ConexionBD::conectar());
+    $usuario = $usuarioDAO->obtenerPorUid($uid);
+
+    if (!$usuario) {    //Si no se encuentra el usuario
+        setcookie("uid", "", 0);   //Borramos la cookie
+        header("Location: index.php");
+    } else {
+        //Iniciamos sesión
+        $_SESSION['email'] = $usuario->getEmail();
+        $_SESSION['idUsuario'] = $usuario->getId();
+        
+        //Renovamos la cookie otra semana
+        setcookie("uid", $uid, time() + 7 * 24 * 60 * 60);
     }
 }
 

@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="web/css/bootstrap.minCopia.css">
         <link rel="stylesheet" href="web/fontawesome/css/all.min.css">
         <link rel="stylesheet" href="web/css/templatemo-style.css">
-        
+
     </head>
     <body>
         <!-- Page Loader -->
@@ -37,9 +37,16 @@
                         <li class="nav-item">
                             <a class="nav-link nav-link-2" href="app/vistas/subirAnuncio.php">Mis Anuncios</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link nav-link-3" href="index.php?action=login">Login/Registro</a>
-                        </li>
+
+                        <?php if (isset($_SESSION['email'])): ?>
+                            <li class="nav-item">
+                                <a class="nav-link nav-link-3" href="index.php?action=logout">Logout</a>
+                            </li>
+                        <?php else: ?>
+                            <li class="nav-item">
+                                <a class="nav-link nav-link-3" href="index.php?action=login">Login/Registro</a>
+                            </li>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
