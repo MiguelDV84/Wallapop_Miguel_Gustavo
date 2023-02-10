@@ -23,10 +23,24 @@ class AnunciosController {
         $array_anuncios = $anuncioDAO->getAnuncios();
         
         //incluimos la vista
-        require 'app/vistas/anuncios.php';
+        require 'app/vistas/inicio.php';
         
     }
     
-    
+    function descripcion(){
+        
+        $anuncioDAO = new AnuncioDAO(ConexionBD::conectar());
+        
+        $idAnuncio = $_GET['idAnuncio'];
+        //Obtengo todos los mensajes de la BD
+        $anuncio = $anuncioDAO->getAnunciosIdAnuncio($idAnuncio);
+        
+        $array_anuncios = $anuncioDAO->getAnuncios();
+        
+        //incluimos la vista
+        require 'app/vistas/descripcion.php';
+        
+        
+    }
     
 }
