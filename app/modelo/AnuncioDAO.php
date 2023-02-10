@@ -53,4 +53,20 @@ class AnuncioDAO{
         return $anuncio;
 
     }
+    
+    
+    public function getImagenesAnuncios($idAnuncio){
+        $query = "SELECT * FROM anuncios WHERE id_anuncio = ?";
+        if(!$stmt =  $this->conn->prepare($query)){
+            die("Error al ejecutar la QUERY" . $this->conn->error);
+        }
+
+        $stmt->bind_param('i', $idAnuncio);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $anuncio = $result->fetch_object('Anuncio');
+
+        return $anuncio;
+    }
 }

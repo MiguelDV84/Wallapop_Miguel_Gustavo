@@ -35,6 +35,8 @@ class AnunciosController {
         //Obtengo todos los mensajes de la BD
         $anuncio = $anuncioDAO->getAnunciosIdAnuncio($idAnuncio);
         
+        $array_anuncios = $anuncioDAO->getAnuncios();
+        
         //incluimos la vista
         require 'app/vistas/descripcion.php';
         
