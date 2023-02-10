@@ -61,11 +61,11 @@ class UsuariosController
 
             if (!$usuario) {
                 MensajeFlash::guardarMensaje("El usuario o la contraseña no son valido");
-                header("Location: index.php");
+                header("Location: index.php?action=login");
                 die();
             } elseif (!password_verify($passwordForm, $usuario->getPassword())) {
                 MensajeFlash::guardarMensaje("El usuario o la contraseña no son validos");
-                header("Location: index.php");
+                header("Location: index.php?action=login");
                 die();
             } else {
                 //Datos correctos
@@ -74,6 +74,8 @@ class UsuariosController
                 $_SESSION['nombre'] = $usuario->getNombre();
                 $_SESSION['telefono'] = $usuario->getTelefono();
                 $_SESSION['poblacion'] = $usuario->getPoblacion();
+                header("Location: index.php?action=inicio");
+                die();
             }
         }else{
             require 'app/vistas/login.php';
@@ -83,7 +85,6 @@ class UsuariosController
     function logout()
     {
         session_destroy();
-        setcookie("uid", "", 0);
         header("Location: index.php");
     }
 }

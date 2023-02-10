@@ -1,3 +1,9 @@
+<?php
+session_start();
+ob_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -35,9 +41,15 @@
                         <li class="nav-item">
                             <a class="nav-link nav-link-2" href="app/vistas/subirAnuncio.php">Mis Anuncios</a>
                         </li>
+                        <?php if(isset($_SESSION['idUsuario'])): ?>
+                            <a class="nav-link nav-link-3" href="index.php?action=login">Perfil</a>
+                            <a class="nav-link nav-link-3" href="index.php?action=logout">Logout</a>
+                            
+                        <?php elseif(!isset($_SESSION['idUsuario'])): ?>
                         <li class="nav-item">
                             <a class="nav-link nav-link-3" href="index.php?action=login">Login/Registro</a>
                         </li>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
