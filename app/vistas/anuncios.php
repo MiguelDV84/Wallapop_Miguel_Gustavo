@@ -9,24 +9,12 @@ $anuncioDAO = new AnuncioDAO(ConexionBD::conectar());
 
 // llama al método getAnuncios() a través de la instancia
 $array_anuncios = $anuncioDAO->getAnuncios();
+
+
 ?>  
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Catalog-Z Bootstrap 5.0 HTML Template</title>
-        <link rel="stylesheet" href="web/css/bootstrap.min.css">
-        <link rel="stylesheet" href="web/fontawesome/css/all.min.css">
-        <link rel="stylesheet" href="web/css/templatemo-style.css">
-        
-    </head>
-    <body>
-        <!-- Page Loader -->
-        <div id="loader-wrapper">
-            <div id="loader"></div>
 
+<<<<<<< Updated upstream
             <div class="loader-section section-left"></div>
             <div class="loader-section section-right"></div>
 
@@ -55,6 +43,8 @@ $array_anuncios = $anuncioDAO->getAnuncios();
                 </div>
             </div>
         </nav>
+=======
+>>>>>>> Stashed changes
 
         <div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll" data-image-src="../../web/img/hero.jpg">
             <form class="d-flex tm-search-form">
@@ -107,7 +97,6 @@ $array_anuncios = $anuncioDAO->getAnuncios();
                     <div class="d-flex justify-content-between tm-text-gray">
                         <span class="tm-text-gray-light">18 Oct 2020</span>
                         <span>9,906 €</span>
-
                     </div>
                     <p>Esta sería la descripción del articulo</p>
                 </div>
