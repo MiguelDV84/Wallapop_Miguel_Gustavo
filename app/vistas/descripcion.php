@@ -13,27 +13,23 @@ require 'app/vistas/plantilla.php';
     <div class="row tm-mb-90">            
         <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="web/img/iphone12.jpg" alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="web/img/iphoneRev.jpg" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="..." alt="Third slide">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Anterior</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Siguiente</span>
-  </a>
-</div>
-<!--<img src="web/img/<?= $anuncio->getImagen(); ?>" alt="Image" class="img-fluid">-->
+                <div class="carousel-inner">
+                    <?php foreach ($array_fotos as $foto): ?>
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="web/img/<?= $foto->getFoto() ; ?>" alt="First slide">
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" style="background-color: black;">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Anterior</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" style="background-color: black;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Siguiente</span>
+                </a>
+            </div>
+            <!--<img src="web/img/<?= $anuncio->getImagen(); ?>" alt="Image" class="img-fluid">-->
         </div>
         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
             <div class="tm-bg-gray tm-video-details">
