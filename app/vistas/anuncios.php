@@ -43,13 +43,13 @@ $array_anuncios = $anuncioDAO->getAnuncios();
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link nav-link-1 active" aria-current="page" href="app/vistas/anuncios.php">Anuncios</a>
+                            <a class="nav-link nav-link-1 active" aria-current="page" href="anuncios.php">Anuncios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link nav-link-2" href="app/vistas/subirAnuncio.php">Mis Anuncios</a>
+                            <a class="nav-link nav-link-2" href="subirAnuncio.php">Mis Anuncios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link nav-link-3" href="app/vistas/registro.php">Login/Registro</a>
+                            <a class="nav-link nav-link-3" href="registro.php">Login/Registro</a>
                         </li>
                     </ul>
                 </div>
@@ -80,7 +80,8 @@ $array_anuncios = $anuncioDAO->getAnuncios();
                         <img src="web/img/<?= $anuncio->getImagen()?>" alt="Image" class="img-fluid">
                         <figcaption class="d-flex align-items-center justify-content-center">
                             <h2><?= $anuncio->getTitulo() ?></h2>
-                            <a href="photo-detail.html">View more</a>
+                            <a href="index.php?action=descripcion&idAnuncio=<?= $anuncio->getId(); ?>">View more</a>
+
                         </figcaption>                    
                     </figure>
                     <div class="d-flex justify-content-between tm-text-gray">
