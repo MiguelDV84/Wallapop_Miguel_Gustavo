@@ -14,9 +14,9 @@ require 'app/vistas/plantilla.php';
         <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
-                    <?php foreach ($array_fotos as $foto): ?>
+                    <?php foreach ($arrayfotos as $foto): ?>
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="web/img/<?= $foto->getFoto() ; ?>" alt="First slide">
+                        <img class="d-block w-100" src="web/img/<?= $foto->foto ?>" alt="First slide">
                     </div>
                     <?php endforeach; ?>
                 </div>
