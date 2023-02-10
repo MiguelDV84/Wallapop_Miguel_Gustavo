@@ -1,56 +1,7 @@
 <?php
-
+require 'app/vistas/plantilla.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Descripción del anuncio</title>
-        <link rel="stylesheet" href="web/css/bootstrap.min.css">
-        <link rel="stylesheet" href="web/fontawesome/css/all.min.css">
-        <link rel="stylesheet" href="web/css/templatemo-style.css">
-        <!--
-            
-        TemplateMo 556 Catalog-Z
-        
-        https://templatemo.com/tm-556-catalog-z
-        
-        -->
-    </head>
-    <body>
-        <!-- Page Loader -->
-        <div id="loader-wrapper">
-            <div id="loader"></div>
 
-            <div class="loader-section section-left"></div>
-            <div class="loader-section section-right"></div>
-
-        </div>
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="anuncios.php">
-
-                    WallaFake
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link nav-link-1 active" aria-current="page" href="../../index.php">Anuncios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link nav-link-2" href="subirAnuncio.php">Mis Anuncios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link nav-link-3" href="registro.php">Login/Registro</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
         <div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll" data-image-src="../../img/hero.jpg">
 
         </div>
@@ -119,8 +70,97 @@
                         <span>12,460 views</span>
                     </div>
                 </div>
-                
-                       
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+                    <figure class="effect-ming tm-video-item">
+                        <img src="../../img/img-02.jpg" alt="Image" class="img-fluid">
+                        <figcaption class="d-flex align-items-center justify-content-center">
+                            <h2>Perfumes</h2>
+                            <a href="#">View more</a>
+                        </figcaption>                    
+                    </figure>
+                    <div class="d-flex justify-content-between tm-text-gray">
+                        <span class="tm-text-gray-light">12 Oct 2020</span>
+                        <span>11,402 views</span>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+                    <figure class="effect-ming tm-video-item">
+                        <img src="../../img/img-03.jpg" alt="Image" class="img-fluid">
+                        <figcaption class="d-flex align-items-center justify-content-center">
+                            <h2>Clocks</h2>
+                            <a href="#">View more</a>
+                        </figcaption>                    
+                    </figure>
+                    <div class="d-flex justify-content-between tm-text-gray">
+                        <span class="tm-text-gray-light">8 Oct 2020</span>
+                        <span>9,906 views</span>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+                    <figure class="effect-ming tm-video-item">
+                        <img src="../../img/img-04.jpg" alt="Image" class="img-fluid">
+                        <figcaption class="d-flex align-items-center justify-content-center">
+                            <h2>Plants</h2>
+                            <a href="#">View more</a>
+                        </figcaption>                    
+                        ure>
+                        <div c    </figlass="d-flex justify-content-between tm-text-gray">
+                            <span class="tm-text-gray-light">6 Oct 2020</span>
+                            <span>16,100 views</span>
+                        </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+                    <figure class="effect-ming tm-video-item">
+                        <img src="../../img/img-05.jpg" alt="Image" class="img-fluid">
+                        <figcaption class="d-flex align-items-center justify-content-center">
+                            <h2>Morning</h2>
+                            <a href="#">View more</a>
+                        </figcaption>                    
+                    </figure>
+                    <div class="d-flex justify-content-between tm-text-gray">
+                        <span class="tm-text-gray-light">26 Sep 2020</span>
+                        <span>16,008 views</span>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+                    <figure class="effect-ming tm-video-item">
+                        <img src="../../img/img-06.jpg" alt="Image" class="img-fluid">
+                        <figcaption class="d-flex align-items-center justify-content-center">
+                            <h2>Pinky</h2>
+                            <a href="#">View more</a>
+                        </figcaption>                    
+                    </figure>
+                    <div class="d-flex justify-content-between tm-text-gray">
+                        <span class="tm-text-gray-light">22 Sep 2020</span>
+                        <span>12,860 views</span>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+                    <figure class="effect-ming tm-video-item">
+                        <img src="../../img/img-07.jpg" alt="Image" class="img-fluid">
+                        <figcaption class="d-flex align-items-center justify-content-center">
+                            <h2>Bus</h2>
+                            <a href="#">View more</a>
+                        </figcaption>                    
+                    </figure>
+                    <div class="d-flex justify-content-between tm-text-gray">
+                        <span class="tm-text-gray-light">12 Sep 2020</span>
+                        <span>10,900 views</span>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+                    <figure class="effect-ming tm-video-item">
+                        <img src="../../img/img-08.jpg" alt="Image" class="img-fluid">
+                        <figcaption class="d-flex align-items-center justify-content-center">
+                            <h2>New York</h2>
+                            <a href="#">View more</a>
+                        </figcaption>                    
+                    </figure>
+                    <div class="d-flex justify-content-between tm-text-gray">
+                        <span class="tm-text-gray-light">4 Sep 2020</span>
+                        <span>11,300 views</span>
+                    </div>
+                </div>        
             </div> <!-- row -->
         </div> <!-- container-fluid, tm-container-content -->
 
