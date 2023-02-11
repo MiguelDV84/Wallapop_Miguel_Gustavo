@@ -70,4 +70,7 @@ class UsuarioDAO
         //Para que netbeans reconozca el objeto de la clase Usuario  
         return $usuario;
     }
+    
+    
+    
 }
