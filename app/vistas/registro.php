@@ -7,9 +7,12 @@ require 'app/vistas/plantilla.php';
         <div class="row tm-mb-50">
             <div class="col-lg-4 col-12 mb-5">
                 <h2 class="tm-text-primary mb-5">Registrate</h2>
-                <form id="contact-form" action="../../index.php?action=registro" method="POST" class="tm-contact-form mx-auto">
+                <form id="contact-form" action="index.php?action=registro" method="POST" enctype="multipart/form-data" class="tm-contact-form mx-auto">
                     <div class="form-group">
-                        <input type="email" name="email" class="form-control rounded-0" placeholder="Email" required />
+                        <input type="email" name="email" class="form-control rounded-0" value="<?= $email ?>" id="email" placeholder="Email" required />
+                        <i class="fa-solid fa-check" id="email_check"></i>
+                        <i class="fa-solid fa-xmark" id="email_error"></i>
+                        <div id="preloader" class="spinner-border" role="status"></div>
                     </div>
                     <div class="form-group">
                         <input type="password" name="password" class="form-control rounded-0" placeholder="Password" required />
@@ -20,17 +23,17 @@ require 'app/vistas/plantilla.php';
                     <div class="form-group">
                         <input type="text" name="telefono" class="form-control rounded-0" placeholder="Telefono" required />
                     </div>
-                    <!--<div class="form-group">
-                        <select class="form-control" id="contact-select" name="inquiry">
-                            <option value="usuario">Usuario</option>
-                            <option value="admin">Admin</option>
-                            
-                        </select>
-                    </div>-->
+                    
+                    
+                    
                     <div class="form-group">
                         <input type="text" name="poblacion" class="form-control rounded-0" placeholder="Poblacion" required />
                     </div>
-
+                    
+                    <div class="form-group">
+                        <input type="file" name="foto" placeholder="foto" accept=".gif, .jpg, .png, .webp">
+                    </div>
+                    
                     <div class="form-group tm-text-right">
                         <button type="submit" value="registro" class="btn btn-primary">Registrarse</button>
                     </div>
@@ -113,6 +116,47 @@ require 'app/vistas/plantilla.php';
         $(window).on("load", function() {
             $('body').addClass('loaded');
         });
+        document.getElementById('email').addEventListener("change", () => { 
+        //Inicialimazos variables
+        let data = new FormData();
+        data.append("email", document.getElementById("email").value);
+        let url = "index.php?action=comprobar_email";
+        let init = {
+            method: 'POST',
+            body: data
+        };
+        
+        //Mostramos el preloader y ocultamos el tick y la cruz
+        document.getElementById("preloader").style.display="inline-block";
+        document.getElementById("email_check").style.display="none";
+        document.getElementById("email_error").style.display="none";
+        
+        //Iniciamos la conexión AJAX
+        fetch(url, init)
+        .then((respuesta) => {
+            return respuesta.json();
+        })
+        .then((json) => {
+            //Ocultamos el preloader
+            document.getElementById("preloader").style.display="none";
+            /* aquí manejamos el json*/
+            console.log(json);
+            if(json.repetido){
+                document.getElementById("email_error").style.display="inline";
+                
+            }else{
+                document.getElementById("email_check").style.display="inline";
+            }
+        })
+        .catch((error) => {
+            //Ocultamos el preloader
+            document.getElementById("preloader").style.display="none";
+            //Mostramos el error por la consola
+            console.error(error);   //Captura errores de conexión de red
+        });
+    });
+
+        
     </script>
 </body>
 </html>

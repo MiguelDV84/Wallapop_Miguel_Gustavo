@@ -13,7 +13,37 @@ ob_start();
         <link rel="stylesheet" href="web/css/bootstrap.minCopia.css">
         <link rel="stylesheet" href="web/fontawesome/css/all.min.css">
         <link rel="stylesheet" href="web/css/templatemo-style.css">
-        
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
+
+        <style>
+            #email_check{
+                color:green;
+                display: none;
+            }
+            #email_error{
+
+                color:red;
+                display:none;
+            }
+            #preloader{
+                display:none;
+                height: 20px;
+                width: 20px
+
+            }
+            #fotoUsuario{
+                width: 40px;
+                height: 40px;
+                background-position: center;
+                background-size: cover;
+                display: inline-block;
+                border-radius: 30px;
+                position: relative;
+                top: 10px;
+                border: 1px solid #999;
+            }
+
+        </style>
     </head>
     <body>
         <!-- Page Loader -->
@@ -43,15 +73,9 @@ ob_start();
                         <li class="nav-item">
                             <a class="nav-link nav-link-2" href="app/vistas/subirAnuncio.php">Mis Anuncios</a>
                         </li>
-                        <?php if(isset($_SESSION['idUsuario'])): ?>
-                            <a class="nav-link nav-link-3" href="index.php?action=login">Perfil</a>
-                            <a class="nav-link nav-link-3" href="index.php?action=logout">Logout</a>
-                            
-                        <?php elseif(!isset($_SESSION['idUsuario'])): ?>
                         <li class="nav-item">
                             <a class="nav-link nav-link-3" href="index.php?action=login">Login/Registro</a>
                         </li>
-                        <?php endif; ?>
                     </ul>
                 </div>
             </div>

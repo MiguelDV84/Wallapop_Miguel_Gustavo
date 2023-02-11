@@ -6,6 +6,7 @@ class Usuario {
     private $nombre;
     private $telefono;
     private $poblacion;
+    private $foto;
     private $uid;
 
 
@@ -112,6 +113,15 @@ class Usuario {
         public function setUid($uid): void {
             $this->uid = $uid;
         }
+        
+        public function getFoto() {
+            return $this->foto;
+        }
+
+        public function setFoto($foto): void {
+            $this->foto = $foto;
+        }
+
 
 
 }
