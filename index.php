@@ -15,6 +15,7 @@ require_once 'app/utilidades/MensajeFlash.php';
 $map = array(
     "login" => array("controller" =>  "UsuariosController", "method" => "login", "publica" => true),
     "registro" => array("controller" =>  "UsuariosController", "method" => "registrar", "publica" => true),
+    "logout" => array("controller" => "UsuariosController", "method" => "logout", "publica" => true),
     "inicio" => array("controller" => "AnunciosController", "method" => "inicio", "publica" => true), 
     "descripcion" => array("controller" => "AnunciosController", "method" => "descripcion", "publica" => true),
     "logout" => array("controller" => "UsuariosController", "method" => "logout", "publica" => true),

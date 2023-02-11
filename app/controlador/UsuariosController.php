@@ -87,25 +87,19 @@ class UsuariosController
 
             if (!$usuario) {
                 MensajeFlash::guardarMensaje("El usuario o la contraseña no son valido");
-                header("Location: index.php");
+                header("Location: index.php?action=login");
                 die();
             } elseif (!password_verify($passwordForm, $usuario->getPassword())) {
                 MensajeFlash::guardarMensaje("El usuario o la contraseña no son validos");
-                header("Location: index.php");
+                header("Location: index.php?action=login");
                 die();
             } else {
                 //Datos correctos
                 $_SESSION['email'] = $usuario->getEmail();
                 $_SESSION['idUsuario'] = $usuario->getId();
-                $_SESSION['foto'] = $usuario->getFoto();
-                //Guardado de cookie. Generamos un uid aleatorio y lo guardamos en la BD y en la cookie
-            $uid = sha1(time() + rand()) . md5(time());
-            $usuario->setUid($uid);
-            $usuarioDAO->actualizar($usuario);
-            setcookie("uid", $uid, time() + 7 * 24 * 60 * 60);
-            
-            header("Location: index.php");
-            die();
+                $_SESSION['nombre'] = $usuario->getNombre();
+                $_SESSION['telefono'] = $usuario->getTelefono();
+                $_SESSION['poblacion'] = $usuario->getPoblacion();
             }
         }else{
             require 'app/vistas/login.php';
@@ -115,7 +109,6 @@ class UsuariosController
     function logout()
     {
         session_destroy();
-        setcookie("uid", "", 0);
         header("Location: index.php");
     }
     
