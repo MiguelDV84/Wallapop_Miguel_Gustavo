@@ -72,5 +72,19 @@ class AnuncioDAO {
 
         return $anuncio;
     }
+    
+    public function getUsuarioAnuncio($idAnuncio) {
+    $sql = "SELECT anuncios.id, anuncios.precio, anuncios.titulo, anuncios.descripcion, anuncios.fecha, anuncios.imagen, anuncios.id_usuario, usuarios.*
+            FROM anuncios
+            INNER JOIN usuarios ON anuncios.id_usuario = usuarios.id
+            WHERE anuncios.id = ?";
 
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bind_param("i", $idAnuncio);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $usuarioAnuncio = $result->fetch_object("Usuario");
+    return $usuarioAnuncio;
+    }
 }

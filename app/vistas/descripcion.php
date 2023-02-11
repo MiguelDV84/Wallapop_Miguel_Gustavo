@@ -43,7 +43,7 @@ require 'app/vistas/plantilla.php';
         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
             <div class="tm-bg-gray tm-video-details">
                 <p class="mb-4">
-                    Este anuncio a sido subido por: <!-- Usuario del anuncio -->
+                    Este anuncio a sido subido por: <?= $usuario?>
                 </p>
 
                 <!--

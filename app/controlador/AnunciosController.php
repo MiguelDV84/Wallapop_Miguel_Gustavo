@@ -32,6 +32,8 @@ class AnunciosController {
         $anuncioDAO = new AnuncioDAO(ConexionBD::conectar());
         
         $idAnuncio = $_GET['idAnuncio'];
+        
+        $usuario = $_SESSION['email'];
         //Obtengo todos los mensajes de la BD
         $anuncio = $anuncioDAO->getAnunciosIdAnuncio($idAnuncio);
         
