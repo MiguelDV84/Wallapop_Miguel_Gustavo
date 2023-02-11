@@ -8,8 +8,7 @@ class UsuariosController
     //Inicializamos las variables en blanco para que no den error al imprimirlos en los values
     //cuando cargamos la pagina la primera vez.
 
-    function registrar()
-    {
+    function registrar(){
         $email = "";
         $password = "";
         $nombre = "";
@@ -68,6 +67,7 @@ class UsuariosController
                 $usuario->setFoto($nuevoNombreCompleto);
                 //$usuario->setUid($);
                 $usuarioDAO->insertar($usuario);
+                
                 header('Location: index.php?action=inicio');
                 die();
             }
@@ -75,8 +75,7 @@ class UsuariosController
         require 'app/vistas/registro.php';
     }
 
-    function login()
-    {
+    function login(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
@@ -97,9 +96,16 @@ class UsuariosController
                 //Datos correctos
                 $_SESSION['email'] = $usuario->getEmail();
                 $_SESSION['idUsuario'] = $usuario->getId();
-                $_SESSION['nombre'] = $usuario->getNombre();
-                $_SESSION['telefono'] = $usuario->getTelefono();
-                $_SESSION['poblacion'] = $usuario->getPoblacion();
+                $_SESSION['foto'] = $usuario->getFoto();
+                //Guardado de cookie. Generamos un uid aleatorio y lo guardamos en la BD y en la cookie
+                $uid = sha1(time() + rand()) . md5(time());
+                $usuario->setUid($uid);
+                $usuarioDAO->actualizar($usuario);
+                setcookie("uid", $uid, time() + 7 * 24 * 60 * 60);
+                
+                header("Location: index.php");                
+
+                die();
             }
         }else{
             require 'app/vistas/login.php';
