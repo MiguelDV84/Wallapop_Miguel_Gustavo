@@ -18,6 +18,7 @@ $map = array(
     "inicio" => array("controller" => "AnunciosController", "method" => "inicio", "publica" => true), 
     "descripcion" => array("controller" => "AnunciosController", "method" => "descripcion", "publica" => true),
     "logout" => array("controller" => "UsuariosController", "method" => "logout", "publica" => true),
+    "comprobar_email" => array("controller" => "UsuariosController", "method" =>"comprobar_email", "publica" => true)
 );
 
 /* PARSEO DE LA RUTA */

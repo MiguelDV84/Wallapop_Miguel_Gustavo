@@ -7,7 +7,24 @@
         <link rel="stylesheet" href="web/css/bootstrap.minCopia.css">
         <link rel="stylesheet" href="web/fontawesome/css/all.min.css">
         <link rel="stylesheet" href="web/css/templatemo-style.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
+
         <style>
+            #email_check{
+                color:green;
+                display: none;
+            }
+            #email_error{
+
+                color:red;
+                display:none;
+            }
+            #preloader{
+                display:none;
+                height: 20px;
+                width: 20px
+
+            }
             #fotoUsuario{
                 width: 40px;
                 height: 40px;

@@ -1,7 +1,7 @@
 
 
 
-<div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll" data-image-src="../../web/img/hero.jpg">
+<div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll" data-image-src="web/img/hero.jpg">
     <form class="d-flex tm-search-form">
         <input class="form-control tm-search-input" type="search" placeholder="Busca por categoria" aria-label="Search">
         <button class="btn btn-outline-success tm-search-btn" type="submit">
@@ -119,6 +119,47 @@
         $(window).on("load", function () {
             $('body').addClass('loaded');
         });
+        
+        document.getElementById('email').addEventListener("change", () => { 
+        //Inicialimazos variables
+        let data = new FormData();
+        data.append("email", document.getElementById("email").value);
+        let url = "index.php?action=comprobar_email";
+        let init = {
+            method: 'POST',
+            body: data
+        };
+        
+        //Mostramos el preloader y ocultamos el tick y la cruz
+        document.getElementById("preloader").style.display="inline-block";
+        document.getElementById("email_check").style.display="none";
+        document.getElementById("email_error").style.display="none";
+        
+        //Iniciamos la conexión AJAX
+        fetch(url, init)
+        .then((respuesta) => {
+            return respuesta.json();
+        })
+        .then((json) => {
+            //Ocultamos el preloader
+            document.getElementById("preloader").style.display="none";
+            /* aquí manejamos el json*/
+            console.log(json);
+            if(json.repetido){
+                document.getElementById("email_error").style.display="inline";
+                
+            }else{
+                document.getElementById("email_check").style.display="inline";
+            }
+        })
+        .catch((error) => {
+            //Ocultamos el preloader
+            document.getElementById("preloader").style.display="none";
+            //Mostramos el error por la consola
+            console.error(error);   //Captura errores de conexión de red
+        });
+    });
+
     </script>
 </body>
 </html>

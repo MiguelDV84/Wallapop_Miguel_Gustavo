@@ -13,7 +13,7 @@ class UsuarioDAO
 
     public function insertar(Usuario $u)
     {
-        $query = "INSERT INTO usuarios (email, password, nombre, telefono, poblacion) VALUES (?,?,?,?,?)";
+        $query = "INSERT INTO usuarios (email, password, nombre, telefono, poblacion, foto) VALUES (?,?,?,?,?,?)";
         if (!$stmt = $this->conn->prepare($query)) {
             die("Error al preparar la sentencia" . $this->conn->error);
         }
@@ -22,8 +22,9 @@ class UsuarioDAO
         $nombre = $u->getNombre();
         $telefono = $u->getTelefono();
         $poblacion = $u->getPoblacion();
+        $foto = $u->getFoto();
         
-        $stmt->bind_param('sssss', $email, $password, $nombre, $telefono, $poblacion);
+        $stmt->bind_param('ssssss', $email, $password, $nombre, $telefono, $poblacion, $foto);
         $stmt->execute();
     }
 
