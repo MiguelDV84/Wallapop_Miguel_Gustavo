@@ -14,19 +14,26 @@ require 'app/vistas/plantilla.php';
         <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="web/img/iphone12.jpg" alt="First slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="web/img/iphoneRev.jpg" alt="Second slide">
-                    </div>
+                    <?php
+                    $number_words = array('First', 'Second', 'Third', 'Fourth'); //crea el array con los nombres en inglés
+                    $counter = 1; //inicializa el contador
+                    foreach ($fotos as $foto):
+                        $alt = $number_words[$counter - 1] . " slide"; //accede al nombre en inglés correspondiente
+                        ?>
+                        <div class="carousel-item <?php echo ($counter === 1) ? 'active' : ''; ?>">
+                            <img class="d-block w-100" src="web/img/<?= $foto->getFoto(); ?>" alt="<?= $alt; ?>">
+                        </div>
+                        <?php
+                        $counter++; //incrementa el contador
+                    endforeach;
+                    ?>
 
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" style="background-color: black;">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Anterior</span>
                 </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" style="background-color: black;">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Siguiente</span>
                 </a>

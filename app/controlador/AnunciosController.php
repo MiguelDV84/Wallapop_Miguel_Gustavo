@@ -37,6 +37,8 @@ class AnunciosController {
         
         $array_anuncios = $anuncioDAO->getAnuncios();
         
+        $fotos = $anuncioDAO->getImagenesAnuncios($idAnuncio);
+        
         //incluimos la vista
         require 'app/vistas/descripcion.php';
         
