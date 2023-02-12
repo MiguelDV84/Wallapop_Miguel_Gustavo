@@ -43,7 +43,7 @@ require 'app/vistas/plantilla.php';
         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
             <div class="tm-bg-gray tm-video-details">
                 <p class="mb-4">
-                    Este anuncio a sido subido por: <?= $usuario?>
+                    Este anuncio a sido subido por: <a href="#"><?= $usuario->getEmail(); ?></a>
                 </p>
 
                 <!--
@@ -84,7 +84,14 @@ require 'app/vistas/plantilla.php';
     </div>
     <div class="row mb-3 tm-gallery">
 
-        <?php foreach ($array_anuncios as $anuncio): ?>
+        <?php
+        
+        
+        $anuncios_inicio = ($pagina - 1) * $anuncios_por_pagina;
+        $anuncios_fin = $anuncios_inicio + $anuncios_por_pagina;
+        for ($i = $anuncios_inicio; $i < $anuncios_fin && $i < count($array_anuncios); $i++):
+            $anuncio = $array_anuncios[$i];
+            ?>
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
                     <img src="web/img/<?= $anuncio->getImagen() ?>" alt="Image" class="img-fluid">
@@ -98,9 +105,24 @@ require 'app/vistas/plantilla.php';
                     <span><?= $anuncio->getPrecio(); ?> .00€</span>
                 </div>
             </div>
-        <?php endforeach; ?>
+        <?php endfor; ?>
 
-    </div> <!-- row -->
+        <!-- row -->
+        <div class="col-12 d-flex justify-content-between align-items-center tm-paging-col">
+            <a href="javascript:void(0);" class="btn btn-primary tm-btn-prev mb-2 disabled">Anterior</a>
+            <div class="tm-paging d-flex">
+                <?php
+                $total_paginas = ceil(count($array_anuncios) / $anuncios_por_pagina);
+                for ($pagina = 1; $pagina <= $total_paginas; $pagina++):
+                    ?>
+                    <a href="index.php?action=descripcion&pagina=<?= $pagina ?>" class="<?= $pagina === $num_pagina ? 'active tm-paging-link' : 'tm-paging-link' ?>">
+                        <?= $pagina ?>
+                    </a>
+                <?php endfor; ?>            </div>
+            <a href="javascript:void(0);" class="btn btn-primary tm-btn-next">Próxima página</a>
+        </div>            
+    </div>
+</div>
 </div> <!-- container-fluid, tm-container-content -->
 
 <footer class="tm-bg-gray pt-5 pb-3 tm-text-gray tm-footer">

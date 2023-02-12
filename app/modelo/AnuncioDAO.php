@@ -72,19 +72,65 @@ class AnuncioDAO {
 
         return $anuncio;
     }
-    
+
     public function getUsuarioAnuncio($idAnuncio) {
-    $sql = "SELECT anuncios.id, anuncios.precio, anuncios.titulo, anuncios.descripcion, anuncios.fecha, anuncios.imagen, anuncios.id_usuario, usuarios.*
+        $sql = "SELECT usuarios.*
             FROM anuncios
             INNER JOIN usuarios ON anuncios.id_usuario = usuarios.id
             WHERE anuncios.id = ?";
 
-    $stmt = $this->conn->prepare($sql);
-    $stmt->bind_param("i", $idAnuncio);
-    $stmt->execute();
-    $result = $stmt->get_result();
+        if (!$stmt = $this->conn->prepare($sql)) {
+            die("Error al ejecutar la QUERY" . $this->conn->error);
+        }
 
-    $usuarioAnuncio = $result->fetch_object("Usuario");
-    return $usuarioAnuncio;
+        $stmt->bind_param("i", $idAnuncio);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $usuarioAnuncio = $result->fetch_object("Usuario");
+        return $usuarioAnuncio;
     }
+    
+    
+    
+    function getFotoPrincipal($idAnuncio){
+        $query = "SELECT * FROM fotografias WHERE id_anuncio = ? and principal = 1";
+        if (!$stmt = $this->conn->prepare($query)) {
+            die("Error al ejecutar la QUERY" . $this->conn->error);
+        }
+
+        $stmt->bind_param('i', $idAnuncio);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $anuncio = $result->fetch_object('Foto');
+
+        return $anuncio;
+
+    }
+    
+    function paginacionAnuncios($num_pagina, $anuncios_por_pagina) {
+        // Calcular el inicio de la pagina actual
+        
+
+        // Realizar la consulta a la base de datos
+        $query = "SELECT * FROM anuncios LIMIT $num_pagina, $anuncios_por_pagina";
+        if (!$result = $this->conn->query($query)) {
+            die("Error al ejecutar la QUERY" . $this->conn->error);
+        }
+
+
+        // Almacenar los resultados de la consulta en un array
+        $array_anuncios = [];
+        while ($row = mysqli_fetch_array($result)) {
+            $array_anuncios[] = $row;
+        }
+
+
+        // Devolver el array de anuncios
+        return $array_anuncios;
+    }
+
+    
+    
 }

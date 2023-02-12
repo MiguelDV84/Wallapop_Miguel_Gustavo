@@ -27,7 +27,10 @@
         <?php foreach ($array_anuncios as $anuncio): ?>
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
+                    
+                    
                     <img src="web/img/<?= $anuncio->getImagen() ?>" alt="Image" class="img-fluid">
+                    
                     <figcaption class="d-flex align-items-center justify-content-center">
                         <h2><?= $anuncio->getTitulo() ?></h2>
                         <a href="index.php?action=descripcion&idAnuncio=<?= $anuncio->getId(); ?>">View more</a>
