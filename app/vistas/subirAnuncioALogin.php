@@ -16,11 +16,11 @@ require 'app/vistas/plantilla.php';
 
         <div class="container-fluid tm-container-content tm-mt-60" >
             <div class="row mb-4">
-                <h2 class="col-12 tm-text-primary" >Por favor Tienes que iniciar sesión para subir un anuncio</h2>
+                <h2 class="col-12 tm-text-primary" > Inicia sesión para empezar a vender artículos</h2>
             </div>
             <div class="row tm-mb-90">            
                 <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
-                    <img src="../../img/img-01-big.jpg" alt="Image" class="img-fluid">
+                    <h2>Puedes iniciar sesión aquí   <a href="index.php?action=login" style="color: black"><i class="fa-solid fa-right-to-bracket"></i></a> </h2>
                 </div>
                 <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12" >
                     <div class="tm-bg-gray tm-video-details" style="background-color: #cccccc; opacity: 0.5;">

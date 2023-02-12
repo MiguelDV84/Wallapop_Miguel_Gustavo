@@ -79,7 +79,7 @@
                             </li>
                         <?php else: ?>
                             <li class="nav-item">
-                                <a class="nav-link nav-link-3" href="index.php?action=login">Login/Registro</a>
+                                <a class="nav-link nav-link-3" href="index.php?action=login"><i class="fa-solid fa-right-to-bracket"></i>  Login/Registro</a>
                             </li>
                         <?php endif; ?>
                     </ul>
