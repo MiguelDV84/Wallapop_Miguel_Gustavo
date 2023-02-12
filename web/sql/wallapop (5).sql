@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-02-2023 a las 02:02:37
+-- Tiempo de generación: 12-02-2023 a las 03:23:52
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -43,7 +43,7 @@ CREATE TABLE `anuncios` (
 
 INSERT INTO `anuncios` (`id`, `precio`, `titulo`, `descripcion`, `fecha`, `imagen`, `id_usuario`) VALUES
 (1, 111, 'iPhone 12 PRO - seminuevo', 'Muy poco uso, un solo dueño, comprado hace 6 meses', '2023-02-06 17:40:25', 'iphone12.jpg', 2),
-(3, 325, 'Bicicleta de montaña', 'Bicicleta de montaña de alta calidad, con cambios ', '2022-12-14 23:00:00', 'BicicletaMontana.jpg', 1),
+(3, 325, 'Bicicleta de montaña', 'Bicicleta de montaña de alta calidad, con cambios ', '2022-12-14 23:00:00', 'BicicletaMontana.jpg', 11),
 (4, 480, 'Televisión OLED', 'Televisión LED de 32 pulgadas en perfecto estado', '2022-11-22 23:00:00', 'Xiaomi2.jpg', 2),
 (5, 200, 'Ordenador portátil', 'Ordenador portátil de última generación con i7 y 1', '2022-10-27 22:00:00', 'portatil.jpg', 3),
 (6, 75, 'Consola de videojuegos', 'Consola de videojuegos Xbox One en buen estado con', '2022-09-11 22:00:00', 'xbox.jpg', 4),
@@ -85,8 +85,28 @@ CREATE TABLE `fotografias` (
 --
 
 INSERT INTO `fotografias` (`id`, `id_anuncio`, `foto`, `principal`) VALUES
-(3, 1, 'iphone.jpg', 1),
-(4, 1, 'iphoneRev.jpg', 0);
+(3, 1, 'iphone12.jpg', 1),
+(4, 1, 'iphoneRev.jpg', 0),
+(6, 8, 'BicicletaCompeticion.jpg', 1),
+(7, 8, 'BicicletaCompeticion2.jpg', 0),
+(10, 8, 'BicicletaCompeticion3.jpg', 0),
+(11, 13, 'BicicletaTrial.jpg', 0),
+(12, 13, 'BicicletaTrial2.jpg', 0),
+(13, 13, 'BicicletaTrial3.jpg', 0),
+(14, 6, 'xbox.jpg', 1),
+(15, 6, 'xbox2.jpg', 0),
+(16, 6, 'xbox3.jpg', 0),
+(17, 1, 'iphone12caras.jgp', 0),
+(18, 5, 'Portatil.jpg', 1),
+(21, 6, 'Portatil2.jpg', 0),
+(22, 5, 'Portatil1.jpg', 0),
+(23, 3, 'BicicletaMontana.jpg', 1),
+(24, 3, 'BicicletaMontana2.jpg', 0),
+(25, 3, 'BicicletaMontana3.jpg', 0),
+(26, 4, 'TelevisionOled.jpg', 1),
+(27, 4, 'TelevisionOled.jpg', 1),
+(28, 4, 'TelevisionOled2.jpg', 0),
+(29, 4, 'TelevisionOled3.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -111,16 +131,16 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `email`, `password`, `nombre`, `telefono`, `poblacion`, `foto`, `uid`) VALUES
 (1, 'user@user.es', '$2y$10$LUo.9HLDX43CLClFvL8tk.13khvTjMZNAM99I11edUeAi4SB06KYq', NULL, NULL, NULL, '', ''),
-(2, 'Gustavo', '$2y$10$i5RhEcqo747cIlewK6eR0utiil2i/JjoayAmjyaHrjh0d9G1nQ2lS', NULL, NULL, NULL, '', ''),
+(2, 'gustavo@gmail.com', '$2y$10$i5RhEcqo747cIlewK6eR0utiil2i/JjoayAmjyaHrjh0d9G1nQ2lS', NULL, NULL, NULL, '', '349532f373f315d07672491e3864cdfbc1c73dc1035cd09d18c992bab8481794607626aa'),
 (3, 'Txsoky', '$2y$10$EELiUpDXU8xX6.dTcyplQuI/Gy3iFwXMZm0x6uuJ.r8UN/4PZHb6G', NULL, NULL, NULL, '', ''),
 (4, 'prueba', '$2y$10$dtULNTRWl1GbvhxmPTu22eAjwrdNB2bLXKwIxNB7hW18dfV4g3wfO', NULL, NULL, NULL, '', ''),
-(5, 'Pilar@gmail.com', '$2y$10$cyjJcUjOAFlL31Hr1JMkROYEe6fAsFO/mFikxoxHrQkLXhp3taJGG', 'Pilar López', '666111666', 'Alcázar de San Juan', 'pilar.jpg', '83dea721f30a97bfb651c8f12241420547108f3865ad3c8fb7bbb8a7bb0aac7ac5670c66'),
+(5, 'Pilar@gmail.com', '$2y$10$cyjJcUjOAFlL31Hr1JMkROYEe6fAsFO/mFikxoxHrQkLXhp3taJGG', 'Pilar López', '666111666', 'Alcázar de San Juan', 'pilar.jpg', 'e872ba9e5cdfe536fea8b10a821c91a37bd3c60400b5bd1e86d1ecf2c6ca4cf2e0ac58fc'),
 (6, 'Juanito@gmail.com', '$2y$10$IUXiLAu0gGkvyI4FQYSb/Os4wYwCCnRylPnye.bi/Ir/Q0cvz3xFO', 'Pilar López', '666111666', 'Alcázar de San Juan', '', ''),
 (7, 'pepito@gmail.com', '$2y$10$.czsCqRQ8/CPLRAKuGyJuuur147m75zUySg1Zf0ECUlAilVJVwmcG', 'Pepo', '666111666', 'Alcázar de San Juan', '', ''),
 (8, 'Pepo@gmail.com', '$2y$10$w3dRCb90AxFLt8WGYRZYTOKoeN/MLjzu8ee5SNT9iEAE6Fhpf7LP6', 'Pilar López', '666111666', 'Alcázar de San Juan', '', ''),
 (9, 'joseju@gmail.com', '$2y$10$YH5Sh/aBioaUKVUcLL23SuRANJETu9rbSXnbOE27jFZd7HUPLwRqq', 'JoseJu', '666111666', 'Alcázar de San Juan', '', '02e4eeedad7134c66d970a96757018609b991fcac42390c02464b1cdef7e651c4fef2293'),
 (10, 'Mike@gmail.com', '$2y$10$.nXkKHST42DLGgjUzdgc7eNXH77VN108fKGXRFB4wGT8ly77jfe7O', 'Mike', '666111666', 'Alcázar de San Juan', '', ''),
-(11, 'coto@hotmail.com', '$2y$10$O1AVhU6.c8LBmYGR0oNNWOPgRJj9C4boU7/RuRssiWfuLHnYmToS2', 'Coto Matamoros', '666111666', 'Alcázar de San Juan', '755cf0701e454bd5999f32df277a260e.jpg', 'be171e640c40ecfd9264b400be5da51b5b77b965ec626e94bf1145119eddac7e29cb8457'),
+(11, 'coto@hotmail.com', '$2y$10$O1AVhU6.c8LBmYGR0oNNWOPgRJj9C4boU7/RuRssiWfuLHnYmToS2', 'Coto Matamoros', '666111666', 'Alcázar de San Juan', '755cf0701e454bd5999f32df277a260e.jpg', 'bed31c710fd83d4f8996a05464f5d92b0b40c1f0ec19a6377fc106ae44c03bf32d5d8c92'),
 (12, 'Juana@hotmail.com', '$2y$10$.a.XQSdc0CO7TwdUcjD4o.7GFrdm69xg0lI0cI/ezyHJeBTaDdXs.', 'Juana y su hermana', '666111666', 'Alcázar de San Juan', '38a0da449677994896f791a2e0f6e1a2.png', '');
 
 --
@@ -168,7 +188,7 @@ ALTER TABLE `anuncios`
 -- AUTO_INCREMENT de la tabla `fotografias`
 --
 ALTER TABLE `fotografias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
