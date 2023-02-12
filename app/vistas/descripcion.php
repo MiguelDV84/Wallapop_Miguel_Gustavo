@@ -13,6 +13,7 @@ require 'app/vistas/plantilla.php';
     <div class="row tm-mb-90">            
         <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <a id="miEnlace" href="#" style="font-size: 50px; color: red; margin-left: 205px;"><i class="fa-sharp fa-regular fa-heart"></i></a>
                 <div class="carousel-inner">
                     <?php
                     $number_words = array('First', 'Second', 'Third', 'Fourth'); //crea el array con los nombres en inglés
@@ -61,7 +62,7 @@ require 'app/vistas/plantilla.php';
                         <h3 class="tm-text-gray-dark mb-3">Titulo</h3>
                         <p><?= $anuncio->getTitulo(); ?></p>
                     </div>
-                    
+
                     <div class="form-group">
                         <h3 class="tm-text-gray-dark mb-3">Descripcion</h3>
                         <p> <?= $anuncio->getDescripcion() ?> </p>
@@ -87,8 +88,6 @@ require 'app/vistas/plantilla.php';
     <div class="row mb-3 tm-gallery">
 
         <?php
-        
-        
         $anuncios_inicio = ($pagina - 1) * $anuncios_por_pagina;
         $anuncios_fin = $anuncios_inicio + $anuncios_por_pagina;
         for ($i = $anuncios_inicio; $i < $anuncios_fin && $i < count($array_anuncios); $i++):
@@ -173,6 +172,16 @@ require 'app/vistas/plantilla.php';
     $('.carousel').carousel({
         interval: 2000
     })
+
+    $('a i.fa-heart').click(function () {
+        if ($(this).hasClass('fa-solid')) {
+            $(this).removeClass('fa-solid');
+            $(this).addClass('fa-regular');
+        } else {
+            $(this).removeClass('fa-regular');
+            $(this).addClass('fa-solid');
+        }
+    });
 </script>
 </body>
 </html>
