@@ -36,6 +36,7 @@ require 'app/vistas/plantilla.php';
                     
                     <div class="form-group tm-text-right">
                         <button type="submit" value="registro" class="btn btn-primary">Registrarse</button>
+                        <a href="index.php?action=login" style="color: #009999;">¿Tienes cuenta?, inicia sesión</a>
                     </div>
                 </form>                
             </div>

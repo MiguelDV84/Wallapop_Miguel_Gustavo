@@ -9,17 +9,23 @@
         </button>
     </form>
 </div>
-
+<strong style="font-size:26px; 
+        float: right;
+        margin: 20px;
+        margin-right: 350px">
+        ¡Bienvenid@ <?= $_SESSION['email'] ?>!     
+        <div style="background-image:url('web/img/<?= $_SESSION['foto'] ?>')" id='fotoUsuario'></div>
+</strong>
 <div class="container-fluid tm-container-content tm-mt-60">
+    
+
     <div class="row mb-4">
         <h2 class="col-6 tm-text-primary">
             Últimos anuncios
         </h2>
         <?php if (isset($_SESSION['email'])): ?>
              
-            <!--<div style="background-image:url('web/imagenes/<?= $_SESSION['foto'] ?>')" id='fotoUsuario'></div>-->
-            <strong>¡Bienvenid@ <?= $_SESSION['email'] ?>!     <div style="background-image:url('web/img/<?= $_SESSION['foto'] ?>')" id='fotoUsuario'></div></strong>
-            
+                        
         <?php endif; ?>
     </div>
     <div class="row tm-mb-90 tm-gallery">

@@ -20,7 +20,9 @@ $map = array(
     "descripcion" => array("controller" => "AnunciosController", "method" => "descripcion", "publica" => true),
     "logout" => array("controller" => "UsuariosController", "method" => "logout", "publica" => true),
     "comprobar_email" => array("controller" => "UsuariosController", "method" =>"comprobar_email", "publica" => true),
-    "paginacion" => array("controller" => "AnunciosController", "method" =>"comprobar_email", "publica" => true)
+    "paginacion" => array("controller" => "AnunciosController", "method" =>"comprobar_email", "publica" => true),
+    "subir_anuncio" => array("controller" => "AnunciosController", "method" =>"subirAnuncio", "publica" => true),
+    "subir_anuncio_login" => array("controller" => "AnunciosController", "method" =>"subirAnuncioLogin", "publica" => true),
 );
 
 /* PARSEO DE LA RUTA */

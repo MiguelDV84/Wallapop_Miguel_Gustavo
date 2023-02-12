@@ -14,18 +14,18 @@ require 'app/vistas/plantilla.php';
 
         </div>
 
-        <div class="container-fluid tm-container-content tm-mt-60">
+        <div class="container-fluid tm-container-content tm-mt-60" >
             <div class="row mb-4">
-                <h2 class="col-12 tm-text-primary">¡Sube tu anuncio!</h2>
+                <h2 class="col-12 tm-text-primary" > Inicia sesión para empezar a vender artículos</h2>
             </div>
             <div class="row tm-mb-90">            
                 <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
-                    <img src="../../img/img-01-big.jpg" alt="Image" class="img-fluid">
+                    <h2>Puedes iniciar sesión aquí   <a href="index.php?action=login" style="color: blue">Inicia sesión   <i class="fa-solid fa-right-to-bracket"></i></a></h2>
                 </div>
-                <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
-                    <div class="tm-bg-gray tm-video-details">
+                <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12" >
+                    <div class="tm-bg-gray tm-video-details" style="background-color: #cccccc; opacity: 0.5;">
                         <p class="mb-4">
-                            Por favor introduce los datos de tu anuncio. Para poder vender articulos en nuestra página debes introducir precio, titulo, descripción y fotos
+                            Por favor Tienes que iniciar sesión para subir un anuncio
                         </p>
 
                         <!--
@@ -38,21 +38,21 @@ require 'app/vistas/plantilla.php';
                             </div>
                         </div>
                         -->
-                        <form id="contact-form" action="" method="POST" class="tm-contact-form mx-auto">
+                        <form id="contact-form" action="" method="POST" class="tm-contact-form mx-auto" style="background-color: #cccccc; opacity: 0.5;">
                             <div class="form-group">
                                 <h3 class="tm-text-gray-dark mb-3">Titulo</h3>
-                                <input type="text" name="titulo" class="form-control rounded-0" placeholder="Titulo del articulo" required />
+                                <input type="text" name="titulo" class="form-control rounded-0" placeholder="Titulo del articulo" style="background-color: #cccccc; opacity: 0.5;"required />
                             </div>
                             <div class="form-group">
                                 <h3 class="tm-text-gray-dark mb-3">Precio</h3>
-                                <input type="number" name="precio" class="form-control rounded-0" placeholder="Precio/€" required />
+                                <input type="number" name="precio" class="form-control rounded-0" placeholder="Precio/€"style="background-color: #cccccc; opacity: 0.5;" required />
                             </div>
                             <div class="form-group">
                                 <h3 class="tm-text-gray-dark mb-3">Descripcion</h3>
-                                <input type="text" name="descripcion" style="height: 100px;" class="form-control rounded-0" placeholder="Haz una breve descripción de tu articulo" required />
+                                <input type="text" name="descripcion"  class="form-control rounded-0" style="background-color: #cccccc; opacity: 0.5; height: 100px;" placeholder="Haz una breve descripción de tu articulo" required />
                             </div>
 
-                            <div class="form-group tm-text-right">
+                            <div class="form-group tm-text-right" >
                                 <button type="submit" class="btn btn-primary">Subir anuncio</button>
                             </div>
                         </form>                
