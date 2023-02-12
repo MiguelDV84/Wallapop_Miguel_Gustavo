@@ -65,7 +65,12 @@
                                aria-current="page" href="index.php?action=inicio">Anuncios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link nav-link-2" href="app/vistas/subirAnuncio.php">Mis Anuncios</a>
+                            <?php if(!isset($_SESSION['idUsuario'])){?>
+                                <a class="nav-link nav-link-2" href="index.php?action=subir_anuncio_login">Mis Anuncios</a>
+                            <?php }else{?>
+                                <a class="nav-link nav-link-2" href="index.php?action=subir_anuncio">Mis Anuncios</a>
+                            <?php } ?>
+                            
                         </li>
 
                         <?php if (isset($_SESSION['email'])): ?>

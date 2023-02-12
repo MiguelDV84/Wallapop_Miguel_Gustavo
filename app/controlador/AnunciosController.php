@@ -66,5 +66,12 @@ class AnunciosController {
         //incluimos la vista
         require 'app/vistas/descripcion.php';
     }
-
+    
+    function subirAnuncio(){
+        require 'app/vistas/subirAnuncio.php';
+    }
+    
+    function subirAnuncioLogin(){
+        require 'app/vistas/subirAnuncioALogin.php';
+    }
 }
