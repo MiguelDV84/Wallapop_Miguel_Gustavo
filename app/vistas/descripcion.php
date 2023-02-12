@@ -13,8 +13,12 @@ require 'app/vistas/plantilla.php';
     <div class="row tm-mb-90">            
         <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                <a id="miEnlace" href="#" style="font-size: 50px; color: red; margin-left: 205px;"><i class="fa-sharp fa-regular fa-heart"></i></a>
+
+                
                 <div class="carousel-inner">
+
+
+
                     <?php
                     $number_words = array('First', 'Second', 'Third', 'Fourth'); //crea el array con los nombres en inglés
                     $counter = 1; //inicializa el contador
@@ -43,10 +47,11 @@ require 'app/vistas/plantilla.php';
         </div>
         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
             <div class="tm-bg-gray tm-video-details">
+                <a href="#" style="font-size: 50px; color: red; margin-left: 150px; float:right;"><i class="fa-sharp fa-regular fa-heart" id="heart"></i></a>
                 <p class="mb-4">
                     Este anuncio a sido subido por: <a href="#"><?= $usuario->getEmail(); ?></a>
-                </p>
-
+                </p><br>
+                
                 <!--
                 <div class="mb-4 d-flex flex-wrap">
                     <div class="mr-4 mb-2">
