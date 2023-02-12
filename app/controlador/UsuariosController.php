@@ -8,7 +8,8 @@ class UsuariosController
     //Inicializamos las variables en blanco para que no den error al imprimirlos en los values
     //cuando cargamos la pagina la primera vez.
 
-    function registrar(){
+    function registrar()
+    {
         $email = "";
         $password = "";
         $nombre = "";
@@ -67,7 +68,6 @@ class UsuariosController
                 $usuario->setFoto($nuevoNombreCompleto);
                 //$usuario->setUid($);
                 $usuarioDAO->insertar($usuario);
-                
                 header('Location: index.php?action=inicio');
                 die();
             }
@@ -75,7 +75,8 @@ class UsuariosController
         require 'app/vistas/registro.php';
     }
 
-    function login(){
+    function login()
+    {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
@@ -86,11 +87,11 @@ class UsuariosController
 
             if (!$usuario) {
                 MensajeFlash::guardarMensaje("El usuario o la contraseña no son valido");
-                header("Location: index.php?action=login");
+                header("Location: index.php");
                 die();
             } elseif (!password_verify($passwordForm, $usuario->getPassword())) {
                 MensajeFlash::guardarMensaje("El usuario o la contraseña no son validos");
-                header("Location: index.php?action=login");
+                header("Location: index.php");
                 die();
             } else {
                 //Datos correctos
@@ -98,14 +99,13 @@ class UsuariosController
                 $_SESSION['idUsuario'] = $usuario->getId();
                 $_SESSION['foto'] = $usuario->getFoto();
                 //Guardado de cookie. Generamos un uid aleatorio y lo guardamos en la BD y en la cookie
-                $uid = sha1(time() + rand()) . md5(time());
-                $usuario->setUid($uid);
-                $usuarioDAO->actualizar($usuario);
-                setcookie("uid", $uid, time() + 7 * 24 * 60 * 60);
-                
-                header("Location: index.php");                
-
-                die();
+            $uid = sha1(time() + rand()) . md5(time());
+            $usuario->setUid($uid);
+            $usuarioDAO->actualizar($usuario);
+            setcookie("uid", $uid, time() + 7 * 24 * 60 * 60);
+            
+            header("Location: index.php");
+            die();
             }
         }else{
             require 'app/vistas/login.php';
@@ -115,6 +115,7 @@ class UsuariosController
     function logout()
     {
         session_destroy();
+        setcookie("uid", "", 0);
         header("Location: index.php");
     }
     

@@ -14,11 +14,20 @@ require 'app/vistas/plantilla.php';
         <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
-                    <?php foreach ($arrayfotos as $foto): ?>
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="web/img/<?= $foto->getFoto() ; ?>" alt="First slide">
-                    </div>
-                    <?php endforeach; ?>
+                    <?php
+                    $number_words = array('First', 'Second', 'Third', 'Fourth'); //crea el array con los nombres en inglés
+                    $counter = 1; //inicializa el contador
+                    foreach ($fotos as $foto):
+                        $alt = $number_words[$counter - 1] . " slide"; //accede al nombre en inglés correspondiente
+                        ?>
+                        <div class="carousel-item <?php echo ($counter === 1) ? 'active' : ''; ?>">
+                            <img class="d-block w-100" src="web/img/<?= $foto->getFoto(); ?>" alt="<?= $alt; ?>">
+                        </div>
+                        <?php
+                        $counter++; //incrementa el contador
+                    endforeach;
+                    ?>
+
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" style="background-color: black;">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -34,7 +43,7 @@ require 'app/vistas/plantilla.php';
         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
             <div class="tm-bg-gray tm-video-details">
                 <p class="mb-4">
-                    Este anuncio a sido subido por: <!-- Usuario del anuncio -->
+                    Este anuncio a sido subido por: <a href="#"><?= $usuario->getEmail(); ?></a>
                 </p>
 
                 <!--
@@ -75,7 +84,14 @@ require 'app/vistas/plantilla.php';
     </div>
     <div class="row mb-3 tm-gallery">
 
-        <?php foreach ($array_anuncios as $anuncio): ?>
+        <?php
+        
+        
+        $anuncios_inicio = ($pagina - 1) * $anuncios_por_pagina;
+        $anuncios_fin = $anuncios_inicio + $anuncios_por_pagina;
+        for ($i = $anuncios_inicio; $i < $anuncios_fin && $i < count($array_anuncios); $i++):
+            $anuncio = $array_anuncios[$i];
+            ?>
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
                     <img src="web/img/<?= $anuncio->getImagen() ?>" alt="Image" class="img-fluid">
@@ -89,9 +105,24 @@ require 'app/vistas/plantilla.php';
                     <span><?= $anuncio->getPrecio(); ?> .00€</span>
                 </div>
             </div>
-        <?php endforeach; ?>
+        <?php endfor; ?>
 
-    </div> <!-- row -->
+        <!-- row -->
+        <div class="col-12 d-flex justify-content-between align-items-center tm-paging-col">
+            <a href="javascript:void(0);" class="btn btn-primary tm-btn-prev mb-2 disabled">Anterior</a>
+            <div class="tm-paging d-flex">
+                <?php
+                $total_paginas = ceil(count($array_anuncios) / $anuncios_por_pagina);
+                for ($pagina = 1; $pagina <= $total_paginas; $pagina++):
+                    ?>
+                    <a href="index.php?action=descripcion&pagina=<?= $pagina ?>" class="<?= $pagina === $num_pagina ? 'active tm-paging-link' : 'tm-paging-link' ?>">
+                        <?= $pagina ?>
+                    </a>
+                <?php endfor; ?>            </div>
+            <a href="javascript:void(0);" class="btn btn-primary tm-btn-next">Próxima página</a>
+        </div>            
+    </div>
+</div>
 </div> <!-- container-fluid, tm-container-content -->
 
 <footer class="tm-bg-gray pt-5 pb-3 tm-text-gray tm-footer">

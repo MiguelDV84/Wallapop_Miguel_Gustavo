@@ -7,6 +7,9 @@ require 'app/vistas/plantilla.php';
         <div class="row tm-mb-50">
             <div class="col-lg-4 col-12 mb-5">
                 <h2 class="tm-text-primary mb-5">Inicia sesión</h2>
+                        <?php 
+                        MensajeFlash::imprimirMensajes()
+                        ?>
                 <form id="contact-form" action="index.php?action=login" method="POST" class="tm-contact-form mx-auto">
                     <div class="form-group">
                         <input type="email" name="email" class="form-control rounded-0" placeholder="Email" required />
