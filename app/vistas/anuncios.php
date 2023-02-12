@@ -9,40 +9,38 @@
         </button>
     </form>
 </div>
-<strong style="font-size:26px; 
+<?php if (isset($_SESSION['email'])): ?>
+    <strong
+        style="
+        font-size:26px; 
         float: right;
         margin: 20px;
-        margin-right: 350px">
-        ¡Bienvenid@ <?= $_SESSION['email'] ?>!     
-        <div style="background-image:url('web/img/<?= $_SESSION['foto'] ?>')" id='fotoUsuario'></div>
-</strong>
-<div class="container-fluid tm-container-content tm-mt-60">
-    
+        margin-right: 350px"
+        >¡Bienvenid@ <?= $_SESSION['email'] ?>!     <div style="background-image:url('web/img/<?= $_SESSION['foto'] ?>')" id='fotoUsuario'></div></strong>
 
+<?php endif; ?>
+<div class="container-fluid tm-container-content tm-mt-60">
     <div class="row mb-4">
         <h2 class="col-6 tm-text-primary">
             Últimos anuncios
         </h2>
-        <?php if (isset($_SESSION['email'])): ?>
-             
-                        
-        <?php endif; ?>
+
+
+
     </div>
     <div class="row tm-mb-90 tm-gallery">
         <!-- Bucle escribe anuncios en lan vista -->
-        <?php 
-            foreach ($array_anuncios as $anuncio):
-                //foreach ($array_fotos_principales as $foto):
-            
-                
-        ?>
-        
+        <?php
+        foreach ($array_anuncios as $anuncio):
+            //foreach ($array_fotos_principales as $foto):
+            ?>
+
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
-                    
-                    
+
+
                     <img src="web/img/<?= $anuncio->getImagen(); ?>" alt="Image" class="img-fluid">
-                    
+
                     <figcaption class="d-flex align-items-center justify-content-center">
                         <h2><?= $anuncio->getTitulo() ?></h2>
                         <a href="index.php?action=descripcion&idAnuncio=<?= $anuncio->getId(); ?>">View more</a>
@@ -56,11 +54,9 @@
                 </div>
                 <p><?= $anuncio->getDescripcion() ?></p>
             </div>
-        <?php 
-        
-        endforeach; 
-        
-        ?>
+    <?php
+endforeach;
+?>
         <!--Fin del bucle -->
 
         <!--CONTENEDOR DE EJEMPLO-->
@@ -138,46 +134,46 @@
         $(window).on("load", function () {
             $('body').addClass('loaded');
         });
-        
-        document.getElementById('email').addEventListener("change", () => { 
-        //Inicialimazos variables
-        let data = new FormData();
-        data.append("email", document.getElementById("email").value);
-        let url = "index.php?action=comprobar_email";
-        let init = {
-            method: 'POST',
-            body: data
-        };
-        
-        //Mostramos el preloader y ocultamos el tick y la cruz
-        document.getElementById("preloader").style.display="inline-block";
-        document.getElementById("email_check").style.display="none";
-        document.getElementById("email_error").style.display="none";
-        
-        //Iniciamos la conexión AJAX
-        fetch(url, init)
-        .then((respuesta) => {
-            return respuesta.json();
-        })
-        .then((json) => {
-            //Ocultamos el preloader
-            document.getElementById("preloader").style.display="none";
-            /* aquí manejamos el json*/
-            console.log(json);
-            if(json.repetido){
-                document.getElementById("email_error").style.display="inline";
-                
-            }else{
-                document.getElementById("email_check").style.display="inline";
-            }
-        })
-        .catch((error) => {
-            //Ocultamos el preloader
-            document.getElementById("preloader").style.display="none";
-            //Mostramos el error por la consola
-            console.error(error);   //Captura errores de conexión de red
+
+        document.getElementById('email').addEventListener("change", () => {
+            //Inicialimazos variables
+            let data = new FormData();
+            data.append("email", document.getElementById("email").value);
+            let url = "index.php?action=comprobar_email";
+            let init = {
+                method: 'POST',
+                body: data
+            };
+
+            //Mostramos el preloader y ocultamos el tick y la cruz
+            document.getElementById("preloader").style.display = "inline-block";
+            document.getElementById("email_check").style.display = "none";
+            document.getElementById("email_error").style.display = "none";
+
+            //Iniciamos la conexión AJAX
+            fetch(url, init)
+                    .then((respuesta) => {
+                        return respuesta.json();
+                    })
+                    .then((json) => {
+                        //Ocultamos el preloader
+                        document.getElementById("preloader").style.display = "none";
+                        /* aquí manejamos el json*/
+                        console.log(json);
+                        if (json.repetido) {
+                            document.getElementById("email_error").style.display = "inline";
+
+                        } else {
+                            document.getElementById("email_check").style.display = "inline";
+                        }
+                    })
+                    .catch((error) => {
+                        //Ocultamos el preloader
+                        document.getElementById("preloader").style.display = "none";
+                        //Mostramos el error por la consola
+                        console.error(error);   //Captura errores de conexión de red
+                    });
         });
-    });
 
     </script>
 </body>
