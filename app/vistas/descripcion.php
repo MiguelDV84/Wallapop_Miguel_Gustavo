@@ -13,9 +13,8 @@ require 'app/vistas/plantilla.php';
     <div class="row tm-mb-90">            
         <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                
-                
-                
+
+                <a id="miEnlace" href="#" style="font-size: 50px; color: red; margin-left: 205px;"><i class="fa-sharp fa-regular fa-heart"></i></a>
                 <div class="carousel-inner">
 
 
