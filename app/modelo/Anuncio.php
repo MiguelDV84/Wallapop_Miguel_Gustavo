@@ -8,7 +8,8 @@ class Anuncio {
     private $fecha;
     private $imagen;
     private $id_usuario;
-
+        
+    
 	/**
 	 * @return mixed
 	 */

@@ -19,10 +19,16 @@ class AnunciosController {
 
         $anuncioDAO = new AnuncioDAO(ConexionBD::conectar());
 
-        //Obtengo todos los mensajes de la BD
+        //Obtengo todos los anuncios de la BD
         $array_anuncios = $anuncioDAO->getAnuncios();
         
+        $array_fotos_principales = array();
         
+        foreach ($array_anuncios as $anuncio){
+                $id_anuncio_foto = $anuncio->getId();
+        
+                $array_fotos_principales[]= $anuncioDAO->getFotoPrincipal($id_anuncio_foto);
+        }
         //incluimos la vista
         require 'app/vistas/inicio.php';
     }
@@ -41,14 +47,19 @@ class AnunciosController {
 
         $idAnuncio = $_GET['idAnuncio'];
 
-        $usuario = $_SESSION['email'];
-        //Obtengo todos los mensajes de la BD
+
+        
+        //Obtenemos el anuncio para la descripcion del anuncio
         $anuncio = $anuncioDAO->getAnunciosIdAnuncio($idAnuncio);
-
+        
+        //Para mostrar otros anuncios en descripcion.php
         $array_anuncios = $anuncioDAO->getAnuncios();
-
+        
+        //Obtenemos las imagenes de la tabla fotografias del anuncio de la descripción
         $fotos = $anuncioDAO->getImagenesAnuncios($idAnuncio);
-
+        
+        
+        //Para mostrar el usuario que ha subido el producto
         $usuario = $anuncioDAO->getUsuarioAnuncio($idAnuncio);
 
         

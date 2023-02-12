@@ -61,17 +61,19 @@ require 'app/vistas/plantilla.php';
                         <h3 class="tm-text-gray-dark mb-3">Titulo</h3>
                         <p><?= $anuncio->getTitulo(); ?></p>
                     </div>
-                    <div class="form-group">
-                        <h3 class="tm-text-gray-dark mb-3">Precio</h3>
-                        <p> <?= $anuncio->getPrecio() ?> .00€</p>
-                    </div>
+                    
                     <div class="form-group">
                         <h3 class="tm-text-gray-dark mb-3">Descripcion</h3>
                         <p> <?= $anuncio->getDescripcion() ?> </p>
                     </div>
+                    <div class="form-group">
+                        <h2 class="tm-text-gray-dark mb-3">Precio</h2>
+                        <p style="font-size: 30px;"> <?= $anuncio->getPrecio() ?> .00€</p>
+                    </div>
+
 
                     <div class="form-group tm-text-right">
-                        <button type="submit" class="btn btn-primary">Comprar artículo</button>
+                        <button type="submit" class="btn btn-primary">Chatear con <?= $usuario->getEmail(); ?></button>
                     </div>
                 </form>                
             </div>

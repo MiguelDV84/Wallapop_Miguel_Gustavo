@@ -24,12 +24,18 @@
     </div>
     <div class="row tm-mb-90 tm-gallery">
         <!-- Bucle escribe anuncios en lan vista -->
-        <?php foreach ($array_anuncios as $anuncio): ?>
+        <?php 
+            foreach ($array_anuncios as $anuncio):
+                //foreach ($array_fotos_principales as $foto):
+            
+                
+        ?>
+        
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
                     
                     
-                    <img src="web/img/<?= $anuncio->getImagen() ?>" alt="Image" class="img-fluid">
+                    <img src="web/img/<?= $anuncio->getImagen(); ?>" alt="Image" class="img-fluid">
                     
                     <figcaption class="d-flex align-items-center justify-content-center">
                         <h2><?= $anuncio->getTitulo() ?></h2>
@@ -44,7 +50,11 @@
                 </div>
                 <p><?= $anuncio->getDescripcion() ?></p>
             </div>
-        <?php endforeach; ?>
+        <?php 
+        
+        endforeach; 
+        
+        ?>
         <!--Fin del bucle -->
 
         <!--CONTENEDOR DE EJEMPLO-->

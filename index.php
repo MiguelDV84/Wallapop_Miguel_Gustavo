@@ -18,7 +18,7 @@ $map = array(
     "registro" => array("controller" =>  "UsuariosController", "method" => "registrar", "publica" => true),
     "inicio" => array("controller" => "AnunciosController", "method" => "inicio", "publica" => true), 
     "descripcion" => array("controller" => "AnunciosController", "method" => "descripcion", "publica" => true),
-    "logout" => array("controller" => "UsuariosController", "method" => "logout", "publica" => false),
+    "logout" => array("controller" => "UsuariosController", "method" => "logout", "publica" => true),
     "comprobar_email" => array("controller" => "UsuariosController", "method" =>"comprobar_email", "publica" => true),
     "paginacion" => array("controller" => "AnunciosController", "method" =>"comprobar_email", "publica" => true)
 );
@@ -51,6 +51,7 @@ if (!isset($_SESSION['idUsuario']) && isset($_COOKIE['uid'])) {
         $_SESSION['email'] = $usuario->getEmail();
         $_SESSION['idUsuario'] = $usuario->getId();
         $_SESSION['foto'] = $usuario->getFoto();
+        
         //Renovamos la cookie otra semana
         setcookie("uid", $uid, time() + 7 * 24 * 60 * 60);
     }
