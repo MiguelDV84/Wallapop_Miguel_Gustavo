@@ -26,8 +26,8 @@
 
             }
             #fotoUsuario{
-                width: 40px;
-                height: 40px;
+                width: 55px;
+                height: 55px;
                 background-position: center;
                 background-size: cover;
                 display: inline-block;
@@ -36,7 +36,7 @@
                 top: 10px;
                 border: 1px solid #999;
             }
-
+            
         </style>
     </head>
     <body>
