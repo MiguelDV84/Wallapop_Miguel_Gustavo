@@ -103,9 +103,9 @@ class AnuncioDAO {
         $stmt->execute();
 
         $result = $stmt->get_result();
-        $anuncio = $result->fetch_object('Foto');
+        $foto = $result->fetch_object('Foto');
 
-        return $anuncio;
+        return $foto;
 
     }
     
