@@ -20,7 +20,7 @@ require 'app/vistas/plantilla.php';
             </div>
             <div class="row tm-mb-90">            
                 <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
-                    <h2>Puedes iniciar sesión aquí   <a href="index.php?action=login" style="color: black"><i class="fa-solid fa-right-to-bracket"></i></a> </h2>
+                    <h2>Puedes iniciar sesión aquí   <a href="index.php?action=login" style="color: blue">Inicia sesión   <i class="fa-solid fa-right-to-bracket"></i></a></h2>
                 </div>
                 <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12" >
                     <div class="tm-bg-gray tm-video-details" style="background-color: #cccccc; opacity: 0.5;">
