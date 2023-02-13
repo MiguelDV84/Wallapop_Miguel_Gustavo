@@ -90,10 +90,8 @@ class AnuncioDAO {
         $usuarioAnuncio = $result->fetch_object("Usuario");
         return $usuarioAnuncio;
     }
-    
-    
-    
-    function getFotoPrincipal($idAnuncio){
+
+    function getFotoPrincipal($idAnuncio) {
         $query = "SELECT * FROM fotografias WHERE id_anuncio = ? and principal = 1";
         if (!$stmt = $this->conn->prepare($query)) {
             die("Error al ejecutar la QUERY" . $this->conn->error);
@@ -106,13 +104,10 @@ class AnuncioDAO {
         $foto = $result->fetch_object('Foto');
 
         return $foto;
-
     }
-    
+
     function paginacionAnuncios($num_pagina, $anuncios_por_pagina) {
         // Calcular el inicio de la pagina actual
-        
-
         // Realizar la consulta a la base de datos
         $query = "SELECT * FROM anuncios LIMIT $num_pagina, $anuncios_por_pagina";
         if (!$result = $this->conn->query($query)) {
@@ -131,6 +126,29 @@ class AnuncioDAO {
         return $array_anuncios;
     }
 
-    
-    
+    function insertarAnuncio($titulo, $precio, $descripcion, $file_name, $idUsuario) {
+        $query = "INSERT INTO anuncios (titulo, precio, descripcion, id_usuario) VALUES (?, ?, ?, ?)";
+        if (!$stmt = $this->conn->prepare($query)) {
+            die("Error al ejecutar la QUERY" . $this->conn->error);
+        }
+
+        $stmt->bind_param('sisi', $titulo, $precio, $descripcion, $idUsuario);
+        $stmt->execute();
+
+        $idAnuncio = $this->conn->insert_id;
+
+        if (!empty($file_name)) {
+            foreach ($file_name as $foto) {
+                $query = "INSERT INTO fotografias (id_anuncio, foto, principal) VALUES (?, ?, ?)";
+                if (!$stmt = $this->conn->prepare($query)) {
+                    die("Error al ejecutar la QUERY" . $this->conn->error);
+                }
+
+                $principal = 0;
+                $stmt->bind_param('iss', $idAnuncio, $foto, $principal);
+                $stmt->execute();
+            }
+        }
+    }
+
 }

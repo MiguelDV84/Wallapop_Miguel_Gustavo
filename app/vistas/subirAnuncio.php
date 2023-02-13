@@ -20,7 +20,9 @@ require 'app/vistas/plantilla.php';
             </div>
             <div class="row tm-mb-90">            
                 <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
+                    
                     <img src="../../img/img-01-big.jpg" alt="Image" class="img-fluid">
+                    <input type="file">
                 </div>
                 <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
                     <div class="tm-bg-gray tm-video-details">
@@ -38,7 +40,7 @@ require 'app/vistas/plantilla.php';
                             </div>
                         </div>
                         -->
-                        <form id="contact-form" action="" method="POST" class="tm-contact-form mx-auto">
+                        <form id="contact-form" action="index.php?action=subir_anuncio_accion" method="POST" class="tm-contact-form mx-auto">
                             <div class="form-group">
                                 <h3 class="tm-text-gray-dark mb-3">Titulo</h3>
                                 <input type="text" name="titulo" class="form-control rounded-0" placeholder="Titulo del articulo" required />
@@ -51,7 +53,10 @@ require 'app/vistas/plantilla.php';
                                 <h3 class="tm-text-gray-dark mb-3">Descripcion</h3>
                                 <input type="text" name="descripcion" style="height: 100px;" class="form-control rounded-0" placeholder="Haz una breve descripción de tu articulo" required />
                             </div>
-
+                            <div class="form-group">
+                                <h3 class="tm-text-gray-dark mb-3">Sube fotos</h3>
+                                <input type="file" name="foto"  class="form-control rounded-0" required multiple/>
+                            </div>
                             <div class="form-group tm-text-right">
                                 <button type="submit" class="btn btn-primary">Subir anuncio</button>
                             </div>
