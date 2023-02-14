@@ -22,6 +22,18 @@ class FotoDAO{
         return $array_fotos;
         
     }
+
+    public function insertarFoto($id_anuncio, $foto, $principal){
+        $query = "INSERT INTO fotografias (id_anuncio, foto, principal) VALUES (?, ?, ?)";
+        if(!$stmt = $this->conn->prepare($query)){
+            die("Error al preparar la sentencia " . $this->conn->error);
+        }
+        
+        $stmt->bind_param('isi', $id_anuncio, $foto, $principal);
+        $stmt->execute();
+
+        
+    }
 }
 
 ?>

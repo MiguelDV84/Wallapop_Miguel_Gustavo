@@ -40,7 +40,7 @@ require 'app/vistas/plantilla.php';
                             </div>
                         </div>
                         -->
-                        <form id="contact-form" action="index.php?action=subir_anuncio_accion" method="POST" class="tm-contact-form mx-auto">
+                        <form id="contact-form" action="index.php?action=subir_anuncio_accion" method="POST" class="tm-contact-form mx-auto" enctype='multipart/form-data'>
                             <div class="form-group">
                                 <h3 class="tm-text-gray-dark mb-3">Titulo</h3>
                                 <input type="text" name="titulo" class="form-control rounded-0" placeholder="Titulo del articulo" required />
@@ -55,7 +55,7 @@ require 'app/vistas/plantilla.php';
                             </div>
                             <div class="form-group">
                                 <h3 class="tm-text-gray-dark mb-3">Sube fotos</h3>
-                                <input type="file" name="foto"  class="form-control rounded-0" required multiple/>
+                                <input type="file" name="foto[]"  class="form-control rounded-0" required multiple/>
                             </div>
                             <div class="form-group tm-text-right">
                                 <button type="submit" class="btn btn-primary">Subir anuncio</button>

@@ -13,9 +13,11 @@ require_once 'app/modelo/ConexionBD.php';
  *
  * @author Alumno
  */
-class AnunciosController {
+class AnunciosController
+{
 
-    function inicio() {
+    function inicio()
+    {
 
         $anuncioDAO = new AnuncioDAO(ConexionBD::conectar());
 
@@ -33,7 +35,8 @@ class AnunciosController {
         require 'app/vistas/inicio.php';
     }
 
-    function descripcion() {
+    function descripcion()
+    {
 
         $anuncioDAO = new AnuncioDAO(ConexionBD::conectar());
 
@@ -63,34 +66,41 @@ class AnunciosController {
         require 'app/vistas/descripcion.php';
     }
 
-    function subirAnuncio() {
+    function subirAnuncio()
+    {
         require 'app/vistas/subirAnuncio.php';
     }
 
-    function subirAnuncioLogin() {
+    function subirAnuncioLogin()
+    {
         require 'app/vistas/subirAnuncioALogin.php';
     }
 
-    function subirAnuncioAccion() {
-        $anuncioDAO = new AnuncioDAO(ConexionBD::conectar());
+    function subirAnuncioAccion()
+    {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $anuncio = new Anuncio();
+            $foto = new Foto();
             //Obtener los datos del formulario
             $titulo = $_POST['titulo'];
             $precio = $_POST['precio'];
             $descripcion = $_POST['descripcion'];
             $file_name = [];
+            $principal = 0;
+            $anuncioDAO = new AnuncioDAO(ConexionBD::conectar());
+            $idAnuncio = $anuncioDAO->insertarAnuncio($precio, $titulo, $descripcion, $_SESSION['idUsuario']);
+            
             foreach ($_FILES['foto']['tmp_name'] as $key => $tmp_name) {
                 $file_name[] = $_FILES['foto']['name'][$key];
                 $file_size = $_FILES['foto']['size'][$key];
                 $file_tmp = $_FILES['foto']['tmp_name'][$key];
                 $file_type = $_FILES['foto']['type'][$key];
 
+                $fotoDAO = new FotoDAO(ConexionBD::conectar());
+                $fotoDAO->insertarFoto($idAnuncio, $file_name[$key], $principal);
                 //Move the uploaded file to the desired location
-                move_uploaded_file($file_tmp, "images/" . $file_name[$key]);
+                move_uploaded_file($file_tmp, "web/img/" . $file_name[$key]);
             }
-            //Llamada a la función insertarAnuncio
-            $anuncioDAO->insertarAnuncio($titulo, $precio, $descripcion, $file_name, $_SESSION['idUsuario']);
         }
     }
-
 }

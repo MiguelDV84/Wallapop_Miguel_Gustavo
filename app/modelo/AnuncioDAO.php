@@ -126,13 +126,13 @@ class AnuncioDAO {
         return $array_anuncios;
     }
 
-    function insertarAnuncio($titulo, $precio, $descripcion, $file_name, $idUsuario) {
-        $query = "INSERT INTO anuncios (titulo, precio, descripcion, id_usuario) VALUES (?, ?, ?, ?)";
+    function insertarAnuncio($precio, $titulo, $descripcion, $idUsuario) {
+        $query = "INSERT INTO anuncios (precio, titulo, descripcion, id_usuario) VALUES (?, ?, ?, ?)";
         if (!$stmt = $this->conn->prepare($query)) {
             die("Error al ejecutar la QUERY" . $this->conn->error);
         }
 
-        $stmt->bind_param('sisi', $titulo, $precio, $descripcion, $idUsuario);
+        $stmt->bind_param('issi', $precio, $titulo, $descripcion, $idUsuario);
         $stmt->execute();
 
         $idAnuncio = $this->conn->insert_id;
@@ -149,6 +149,7 @@ class AnuncioDAO {
                 $stmt->execute();
             }
         }
+        return $stmt->insert_id;
     }
 
 }
