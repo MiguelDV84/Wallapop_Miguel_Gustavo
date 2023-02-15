@@ -11,6 +11,7 @@ require_once 'app/modelo/UsuarioDAO.php';
 require_once 'app/modelo/AnuncioDAO.php';
 require_once 'app/modelo/Anuncio.php';
 require_once 'app/modelo/Foto.php';
+require_once 'app/modelo/FotoDAO.php';
 require_once 'app/utilidades/MensajeFlash.php';
 // Crear un arreglo de mapeo de acciones
 $map = array(
@@ -23,6 +24,7 @@ $map = array(
     "paginacion" => array("controller" => "AnunciosController", "method" =>"comprobar_email", "publica" => true),
     "subir_anuncio" => array("controller" => "AnunciosController", "method" =>"subirAnuncio", "publica" => true),
     "subir_anuncio_login" => array("controller" => "AnunciosController", "method" =>"subirAnuncioLogin", "publica" => true),
+    "subir_anuncio_accion" => array("controller" => "AnunciosController", "method" =>"subirAnuncioAccion", "publica" => true)
 );
 
 /* PARSEO DE LA RUTA */

@@ -38,7 +38,7 @@ require 'app/vistas/plantilla.php';
                             </div>
                         </div>
                         -->
-                        <form id="contact-form" action="" method="POST" class="tm-contact-form mx-auto" style="background-color: #cccccc; opacity: 0.5;">
+                        <form id="contact-form" action="index.php?action=subir_anuncio_accion" method="POST" class="tm-contact-form mx-auto" style="background-color: #cccccc; opacity: 0.5;">
                             <div class="form-group">
                                 <h3 class="tm-text-gray-dark mb-3">Titulo</h3>
                                 <input type="text" name="titulo" class="form-control rounded-0" placeholder="Titulo del articulo" style="background-color: #cccccc; opacity: 0.5;"required />

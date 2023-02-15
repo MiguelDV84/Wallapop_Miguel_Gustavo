@@ -25,7 +25,7 @@ require 'app/vistas/plantilla.php';
                     foreach ($fotos as $foto):
                         $alt = $number_words[$counter - 1] . " slide"; //accede al nombre en inglés correspondiente
                         ?>
-                        <div class="carousel-item <?php echo ($counter === 1) ? 'active' : ''; ?>">
+                    <div class="carousel-item <?php echo ($counter === 1) ? 'active' : ''; ?>" id="carrusel" >
                             <img class="d-block w-100" src="web/img/<?= $foto->getFoto(); ?>" alt="<?= $alt; ?>">
                         </div>
                         <?php

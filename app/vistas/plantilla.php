@@ -4,11 +4,12 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Catalog-Z Bootstrap 5.0 HTML Template</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="web/css/bootstrap.minCopia.css">
         <link rel="stylesheet" href="web/fontawesome/css/all.min.css">
         <link rel="stylesheet" href="web/css/templatemo-style.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
-
+        <script src="web/js/previewImagen.js"></script>
         <style>
             #email_check{
                 color:green;
@@ -43,7 +44,27 @@
                 transform: scale(1.5);
             }
 
-            
+            #carrusel{
+
+            }
+            #carrusel img{
+                width: 100%;
+                height: 900px;
+                object-fit: contain;
+            }
+            figure.effect-ming{
+                height: 400px;
+                width: 400px;
+                background-color: #fff; 
+            }
+            figure.effect-ming img {
+                min-width: 100%;
+                min-height: 100%;
+                object-fit: contain;
+                object-position: center;
+            }
+
+
         </style>
     </head>
     <body>

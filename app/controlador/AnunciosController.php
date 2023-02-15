@@ -13,27 +13,30 @@ require_once 'app/modelo/ConexionBD.php';
  *
  * @author Alumno
  */
-class AnunciosController {
+class AnunciosController
+{
 
-    function inicio() {
+    function inicio()
+    {
 
         $anuncioDAO = new AnuncioDAO(ConexionBD::conectar());
 
         //Obtengo todos los anuncios de la BD
         $array_anuncios = $anuncioDAO->getAnuncios();
-        
+
         $array_fotos_principales = array();
-        
-        foreach ($array_anuncios as $anuncio){
-                $id_anuncio_foto = $anuncio->getId();
-        
-                $array_fotos_principales[]= $anuncioDAO->getFotoPrincipal($id_anuncio_foto);
+
+        foreach ($array_anuncios as $anuncio) {
+            $id_anuncio_foto = $anuncio->getId();
+
+            $array_fotos_principales[] = $anuncioDAO->getFotoPrincipal($id_anuncio_foto);
         }
         //incluimos la vista
         require 'app/vistas/inicio.php';
     }
 
-    function descripcion() {
+    function descripcion()
+    {
 
         $anuncioDAO = new AnuncioDAO(ConexionBD::conectar());
 
@@ -47,31 +50,57 @@ class AnunciosController {
 
         $idAnuncio = $_GET['idAnuncio'];
 
-
-        
         //Obtenemos el anuncio para la descripcion del anuncio
         $anuncio = $anuncioDAO->getAnunciosIdAnuncio($idAnuncio);
-        
+
         //Para mostrar otros anuncios en descripcion.php
         $array_anuncios = $anuncioDAO->getAnuncios();
-        
+
         //Obtenemos las imagenes de la tabla fotografias del anuncio de la descripción
         $fotos = $anuncioDAO->getImagenesAnuncios($idAnuncio);
-        
-        
+
         //Para mostrar el usuario que ha subido el producto
         $usuario = $anuncioDAO->getUsuarioAnuncio($idAnuncio);
 
-        
         //incluimos la vista
         require 'app/vistas/descripcion.php';
     }
-    
-    function subirAnuncio(){
+
+    function subirAnuncio()
+    {
         require 'app/vistas/subirAnuncio.php';
     }
-    
-    function subirAnuncioLogin(){
+
+    function subirAnuncioLogin()
+    {
         require 'app/vistas/subirAnuncioALogin.php';
+    }
+
+    function subirAnuncioAccion()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $anuncio = new Anuncio();
+            $foto = new Foto();
+            //Obtener los datos del formulario
+            $titulo = $_POST['titulo'];
+            $precio = $_POST['precio'];
+            $descripcion = $_POST['descripcion'];
+            $file_name = [];
+            $principal = 0;
+            $anuncioDAO = new AnuncioDAO(ConexionBD::conectar());
+            $idAnuncio = $anuncioDAO->insertarAnuncio($precio, $titulo, $descripcion, $_SESSION['idUsuario']);
+            
+            foreach ($_FILES['foto']['tmp_name'] as $key => $tmp_name) {
+                $file_name[] = $_FILES['foto']['name'][$key];
+                $file_size = $_FILES['foto']['size'][$key];
+                $file_tmp = $_FILES['foto']['tmp_name'][$key];
+                $file_type = $_FILES['foto']['type'][$key];
+
+                $fotoDAO = new FotoDAO(ConexionBD::conectar());
+                $fotoDAO->insertarFoto($idAnuncio, $file_name[$key], $principal);
+                //Move the uploaded file to the desired location
+                move_uploaded_file($file_tmp, "web/img/" . $file_name[$key]);
+            }
+        }
     }
 }
