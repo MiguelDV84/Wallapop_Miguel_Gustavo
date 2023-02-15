@@ -19,10 +19,7 @@ require 'app/vistas/plantilla.php';
         <h2 class="col-12 tm-text-primary">¡Sube tu anuncio!</h2>
     </div>
     <div class="row tm-mb-90">
-        <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
-
-            <img src="../../img/img-01-big.jpg" alt="Image" class="img-fluid">
-            <input type="file">
+        <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12" id="contenedor">
         </div>
         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
             <div class="tm-bg-gray tm-video-details">
@@ -53,13 +50,11 @@ require 'app/vistas/plantilla.php';
                         <h3 class="tm-text-gray-dark mb-3">Descripcion</h3>
                         <input type="text" name="descripcion" style="height: 100px;" class="form-control rounded-0" placeholder="Haz una breve descripción de tu articulo" required />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="contenedor">
                         <h3 class="tm-text-gray-dark mb-3">Sube fotos</h3>
                         <input type="file" id="seleccionArchivos" name="foto[]" class="form-control rounded-0" onchange="previewImagen()" required multiple />
                     </div>
-                    <div class="form-group" id="imagenes-previstas">
-                        <img id="imagenPrevisualizacion" style="height: 126px; width: 126px;">
-                    </div>
+                   
                     <div class="form-group tm-text-right">
                         <button type="submit" class="btn btn-primary">Subir anuncio</button>
                     </div>
@@ -129,9 +124,14 @@ require 'app/vistas/plantilla.php';
         }
         // Ahora tomamos el primer archivo, el cual vamos a previsualizar
         
-        /* for(let i = 0; i < archivos.length ; i++){
-
-        } */
+        for(let i = 0; i < archivos.length ; i++){
+            let cogeArchivo = archivos[i];
+            let url = URL.createObjectURL(cogeArchivo);
+            let imagen = document.createElement("img");
+            imagen.src = url;
+            imagen.style = "height: 126px; width: 126px";
+            document.getElementById("contenedor").appendChild(imagen);
+        }
         const primerArchivo = archivos[0];
         // Lo convertimos a un objeto de tipo objectURL
         const objectURL = URL.createObjectURL(primerArchivo);
