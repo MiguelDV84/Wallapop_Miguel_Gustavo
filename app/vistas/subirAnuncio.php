@@ -37,7 +37,7 @@ require 'app/vistas/plantilla.php';
                             </div>
                         </div>
                         -->
-                <form id="contact-form" action="index.php?action=subir_anuncio_accion" method="POST" class="tm-contact-form mx-auto" enctype='multipart/form-data'>
+                <form id="contact-form" action="index.php?action=subir_anuncio" method="POST" class="tm-contact-form mx-auto" enctype='multipart/form-data'>
                     <div class="form-group">
                         <h3 class="tm-text-gray-dark mb-3">Titulo</h3>
                         <input type="text" name="titulo" class="form-control rounded-0" placeholder="Titulo del articulo" required />
@@ -132,11 +132,6 @@ require 'app/vistas/plantilla.php';
             imagen.style = "height: 126px; width: 126px";
             document.getElementById("contenedor").appendChild(imagen);
         }
-        const primerArchivo = archivos[0];
-        // Lo convertimos a un objeto de tipo objectURL
-        const objectURL = URL.createObjectURL(primerArchivo);
-        // Y a la fuente de la imagen le ponemos el objectURL
-        $imagenPrevisualizacion.src = objectURL;
     });
 </script>
 </body>

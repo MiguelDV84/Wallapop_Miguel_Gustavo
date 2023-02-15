@@ -19,12 +19,9 @@ $map = array(
     "registro" => array("controller" =>  "UsuariosController", "method" => "registrar", "publica" => true),
     "inicio" => array("controller" => "AnunciosController", "method" => "inicio", "publica" => true), 
     "descripcion" => array("controller" => "AnunciosController", "method" => "descripcion", "publica" => true),
-    "logout" => array("controller" => "UsuariosController", "method" => "logout", "publica" => true),
+    "logout" => array("controller" => "UsuariosController", "method" => "logout", "publica" => false),
     "comprobar_email" => array("controller" => "UsuariosController", "method" =>"comprobar_email", "publica" => true),
-    "paginacion" => array("controller" => "AnunciosController", "method" =>"comprobar_email", "publica" => true),
-    "subir_anuncio" => array("controller" => "AnunciosController", "method" =>"subirAnuncio", "publica" => true),
-    "subir_anuncio_login" => array("controller" => "AnunciosController", "method" =>"subirAnuncioLogin", "publica" => true),
-    "subir_anuncio_accion" => array("controller" => "AnunciosController", "method" =>"subirAnuncioAccion", "publica" => true)
+    "subir_anuncio" => array("controller" => "AnunciosController", "method" =>"subirAnuncio", "publica" => false),
 );
 
 /* PARSEO DE LA RUTA */
@@ -62,10 +59,10 @@ if (!isset($_SESSION['idUsuario']) && isset($_COOKIE['uid'])) {
 }
 
 // Verificar si la acción es pública o no
-if (!$map[$action]['publica'] && !isset($_SESSION['usuario'])) {
+if (!$map[$action]['publica'] && !isset($_SESSION['idUsuario'])) {
     // Si la acción no es pública y no existe una sesión de usuario, redirigir a la página de login
-    header("Location: login.php");
-    exit;
+    header("Location: index.php");
+    die();
 }
 
 // Incluir el controlador especificado en el mapeo$controller = $map[$action]['controller'];

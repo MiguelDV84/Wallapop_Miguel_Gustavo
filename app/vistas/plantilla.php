@@ -1,96 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Catalog-Z Bootstrap 5.0 HTML Template</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="web/css/bootstrap.minCopia.css">
-        <link rel="stylesheet" href="web/fontawesome/css/all.min.css">
-        <link rel="stylesheet" href="web/css/templatemo-style.css">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
-        <script src="web/js/previewImagen.js"></script>
-        <style>
-            #email_check{
-                color:green;
-                display: none;
-            }
-            #email_error{
 
-                color:red;
-                display:none;
-            }
-            #preloader{
-                display:none;
-                height: 20px;
-                width: 20px
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalog-Z Bootstrap 5.0 HTML Template</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="web/css/bootstrap.minCopia.css">
+    <link rel="stylesheet" href="web/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="web/css/templatemo-style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
+    <script src="web/js/previewImagen.js"></script>
+    <style>
+        #email_check {
+            color: green;
+            display: none;
+        }
 
-            }
-            #fotoUsuario{
-                width: 55px;
-                height: 55px;
-                background-position: center;
-                background-size: cover;
-                display: inline-block;
-                border-radius: 30px;
-                position: relative;
-                top: 10px;
-                border: 1px solid #999;
-            }
-            #heart{
-                transition: transform 0.3s ease-out;
-            }
-            #heart:hover {
-                transform: scale(1.5);
-            }
+        #email_error {
 
-            
-        </style>
-    </head>
-    <body>
-        <!-- Page Loader -->
-        <div id="loader-wrapper">
-            <div id="loader"></div>
+            color: red;
+            display: none;
+        }
 
-            <div class="loader-section section-left"></div>
-            <div class="loader-section section-right"></div>
+        #preloader {
+            display: none;
+            height: 20px;
+            width: 20px
+        }
 
-        </div>
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.php?action=inicio">
+        #fotoUsuario {
+            width: 55px;
+            height: 55px;
+            background-position: center;
+            background-size: cover;
+            display: inline-block;
+            border-radius: 30px;
+            position: relative;
+            top: 10px;
+            border: 1px solid #999;
+        }
 
-                    WallaFake
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+        #heart {
+            transition: transform 0.3s ease-out;
+        }
+
+        #heart:hover {
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Page Loader -->
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+    </div>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.php?action=inicio">
+
+                WallaFake
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-1 active" style="max-width: 80%;" aria-current="page" href="index.php?action=inicio">Anuncios</a>
+                    </li>
+                    <?php if (isset($_SESSION['idUsuario'])) : ?>
                         <li class="nav-item">
-                            <a class="nav-link nav-link-1 active"
-                               style="max-width: 80%;"
-                               aria-current="page" href="index.php?action=inicio">Anuncios</a>
+                            <a class="nav-link nav-link-2" href="index.php?action=subir_anuncio">Mis Anuncios</a>
                         </li>
                         <li class="nav-item">
-                            <?php if (!isset($_SESSION['idUsuario'])) { ?>
-                                <a class="nav-link nav-link-2" href="index.php?action=subir_anuncio_login">Mis Anuncios</a>
-                            <?php } else { ?>
-                                <a class="nav-link nav-link-2" href="index.php?action=subir_anuncio">Mis Anuncios</a>
-                            <?php } ?>
-
+                            <a class="nav-link nav-link-3" href="index.php?action=logout">Logout</a>
                         </li>
-
-                        <?php if (isset($_SESSION['email'])): ?>
-                            <li class="nav-item">
-                                <a class="nav-link nav-link-3" href="index.php?action=logout">Logout</a>
-                            </li>
-                        <?php else: ?>
-                            <li class="nav-item">
-                                <a class="nav-link nav-link-3" href="index.php?action=login"><i class="fa-solid fa-right-to-bracket"></i>  Login/Registro</a>
-                            </li>
-                        <?php endif; ?>
-                    </ul>
-                </div>
+                    <?php else : ?>
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-3" href="index.php?action=login"><i class="fa-solid fa-right-to-bracket"></i> Login/Registro</a>
+                        </li>
+                    <?php endif; ?>
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>

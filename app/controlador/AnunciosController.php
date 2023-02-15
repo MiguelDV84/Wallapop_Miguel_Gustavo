@@ -66,18 +66,13 @@ class AnunciosController
         require 'app/vistas/descripcion.php';
     }
 
+ 
+
+
     function subirAnuncio()
     {
         require 'app/vistas/subirAnuncio.php';
-    }
 
-    function subirAnuncioLogin()
-    {
-        require 'app/vistas/subirAnuncioALogin.php';
-    }
-
-    function subirAnuncioAccion()
-    {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $anuncio = new Anuncio();
             $foto = new Foto();
@@ -89,7 +84,7 @@ class AnunciosController
             $principal = 0;
             $anuncioDAO = new AnuncioDAO(ConexionBD::conectar());
             $idAnuncio = $anuncioDAO->insertarAnuncio($precio, $titulo, $descripcion, $_SESSION['idUsuario']);
-            
+
             foreach ($_FILES['foto']['tmp_name'] as $key => $tmp_name) {
                 $file_name[] = $_FILES['foto']['name'][$key];
                 $file_size = $_FILES['foto']['size'][$key];
