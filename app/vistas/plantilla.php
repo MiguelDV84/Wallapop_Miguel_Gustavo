@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="web/fontawesome/css/all.min.css">
         <link rel="stylesheet" href="web/css/templatemo-style.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
-
+        <script src="web/js/previewImagen.js"></script>
         <style>
             #email_check{
                 color:green;
