@@ -28,20 +28,20 @@
 
 
     </div>
-    <div class="row tm-mb-90 tm-gallery">
+    <div class="row tm-mb-90 tm-gallery" >
         <!-- Bucle escribe anuncios en lan vista -->
         <?php
         foreach ($array_anuncios as $anuncio):
             //foreach ($array_fotos_principales as $foto):
             ?>
 
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-                <figure class="effect-ming tm-video-item">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5" >
+                <figure class="effect-ming tm-video-item" >
 
 
-                    <img src="web/img/<?= $anuncio->getImagen(); ?>" alt="Image" class="img-fluid">
+                    <img src="web/img/<?= $anuncio->getImagen(); ?>" alt="Image" class="img-fluid" >
 
-                    <figcaption class="d-flex align-items-center justify-content-center">
+                    <figcaption class="d-flex align-items-center justify-content-center" >
                         <h2><?= $anuncio->getTitulo() ?></h2>
                         <a href="index.php?action=descripcion&idAnuncio=<?= $anuncio->getId(); ?>">View more</a>
 
@@ -81,10 +81,7 @@ endforeach;
             <div class="col-12 d-flex justify-content-between align-items-center tm-paging-col">
                 <a href="javascript:void(0);" class="btn btn-primary tm-btn-prev mb-2 disabled">Anterior</a>
                 <div class="tm-paging d-flex">
-                    <a href="javascript:void(0);" class="active tm-paging-link">1</a>
-                    <a href="javascript:void(0);" class="tm-paging-link">2</a>
-                    <a href="javascript:void(0);" class="tm-paging-link">3</a>
-                    <a href="javascript:void(0);" class="tm-paging-link">4</a>
+                    
                 </div>
                 <a href="javascript:void(0);" class="btn btn-primary tm-btn-next">Próxima página</a>
             </div>            
