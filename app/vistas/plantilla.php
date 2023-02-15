@@ -19,42 +19,40 @@
 
         #email_error {
 
-            color: red;
-            display: none;
-        }
+                color:red;
+                display:none;
+            }
+            #preloader{
+                display:none;
+                height: 20px;
+                width: 20px
 
-        #preloader {
-            display: none;
-            height: 20px;
-            width: 20px
-        }
+            }
+            #fotoUsuario{
+                width: 55px;
+                height: 55px;
+                background-position: center;
+                background-size: cover;
+                display: inline-block;
+                border-radius: 30px;
+                position: relative;
+                top: 10px;
+                border: 1px solid #999;
+            }
+            #heart{
+                transition: transform 0.3s ease-out;
+            }
+            #heart:hover {
+                transform: scale(1.5);
+            }
 
-        #fotoUsuario {
-            width: 55px;
-            height: 55px;
-            background-position: center;
-            background-size: cover;
-            display: inline-block;
-            border-radius: 30px;
-            position: relative;
-            top: 10px;
-            border: 1px solid #999;
-        }
-
-        #heart {
-            transition: transform 0.3s ease-out;
-        }
-
-        #heart:hover {
-            transform: scale(1.5);
-        }
-    </style>
-</head>
-
-<body>
-    <!-- Page Loader -->
-    <div id="loader-wrapper">
-        <div id="loader"></div>
+            
+        </style>
+    </head>
+    <body>
+        <!-- Page Loader -->
+        <div id="loader-wrapper">
+            <div id="loader"></div>
 
         <div class="loader-section section-left"></div>
         <div class="loader-section section-right"></div>
