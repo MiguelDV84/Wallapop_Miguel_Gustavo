@@ -27,8 +27,8 @@
 
             }
             #fotoUsuario{
-                width: 55px;
-                height: 55px;
+                width: 50px;
+                height: 50px;
                 background-position: center;
                 background-size: cover;
                 display: inline-block;
@@ -42,10 +42,6 @@
             }
             #heart:hover {
                 transform: scale(1.5);
-            }
-
-            #carrusel{
-
             }
             #carrusel img{
                 width: 100%;
