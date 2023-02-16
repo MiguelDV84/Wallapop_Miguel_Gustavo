@@ -1,6 +1,3 @@
-
-
-
 <div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll" data-image-src="web/img/hero.jpg">
     <form class="d-flex tm-search-form">
         <input class="form-control tm-search-input" type="search" placeholder="Busca por categoria" aria-label="Search">
@@ -9,14 +6,22 @@
         </button>
     </form>
 </div>
-<?php if (isset($_SESSION['email'])): ?>
-    <strong
-        style="
-        font-size:26px; 
-        float: right;
-        margin: 20px;
-        margin-right: 350px"
-        >¡Bienvenid@ <?= $_SESSION['email'] ?>!     <div style="background-image:url('web/img/<?= $_SESSION['foto'] ?>')" id='fotoUsuario'></div></strong>
+<?php if (isset($_SESSION['email'])) : ?>
+    <strong style="
+        font-size: 35px;
+    float: right;
+    margin: 20px;
+    margin-right: 150px;
+    background: linear-gradient(to bottom right, #00bfff, #008080);
+    border-radius: 20px;
+    padding: 0 15px;
+    padding-bottom: 12.5px;
+    color: white;
+    text-shadow: 2px 2px #333;
+    box-shadow: 2px 2px 10px #666;
+    border: 2px solid #00bfff;
+    display: inline-block;
+    position: relative;      ">¡Bienvenid@ <?= $_SESSION['email'] ?>! <div style="background-image:url('web/img/<?= $_SESSION['foto'] ?>')" id='fotoUsuario'></div></strong>
 
 <?php endif; ?>
 <div class="container-fluid tm-container-content tm-mt-60">
@@ -28,24 +33,24 @@
 
 
     </div>
-    <div class="row tm-mb-90 tm-gallery" >
+    <div class="row tm-mb-90 tm-gallery">
         <!-- Bucle escribe anuncios en lan vista -->
         <?php
-        foreach ($array_anuncios as $anuncio):
+        foreach ($array_anuncios as $anuncio) :
             //foreach ($array_fotos_principales as $foto):
-            ?>
+        ?>
 
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5" >
-                <figure class="effect-ming tm-video-item" >
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+                <figure class="effect-ming tm-video-item">
 
 
-                    <img src="web/img/<?= $anuncio->getImagen(); ?>" alt="Image" class="img-fluid" >
+                    <img src="web/img/<?= $anuncio->getImagen(); ?>" alt="Image" class="img-fluid">
 
-                    <figcaption class="d-flex align-items-center justify-content-center" >
+                    <figcaption class="d-flex align-items-center justify-content-center">
                         <h2><?= $anuncio->getTitulo() ?></h2>
                         <a href="index.php?action=descripcion&idAnuncio=<?= $anuncio->getId(); ?>">View more</a>
 
-                    </figcaption>                    
+                    </figcaption>
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">
                     <span class="tm-text-gray-light"><?= $anuncio->getFecha() ?></span>
@@ -54,9 +59,9 @@
                 </div>
                 <p><?= $anuncio->getDescripcion() ?></p>
             </div>
-    <?php
-endforeach;
-?>
+        <?php
+        endforeach;
+        ?>
         <!--Fin del bucle -->
 
         <!--CONTENEDOR DE EJEMPLO-->
@@ -81,10 +86,10 @@ endforeach;
             <div class="col-12 d-flex justify-content-between align-items-center tm-paging-col">
                 <a href="javascript:void(0);" class="btn btn-primary tm-btn-prev mb-2 disabled">Anterior</a>
                 <div class="tm-paging d-flex">
-                    
+
                 </div>
                 <a href="javascript:void(0);" class="btn btn-primary tm-btn-next">Próxima página</a>
-            </div>            
+            </div>
         </div>
     </div> <!-- container-fluid, tm-container-content -->
 
@@ -128,12 +133,10 @@ endforeach;
 
     <script src="web/js/plugins.js"></script>
     <script>
-        $(window).on("load", function () {
+        $(window).on("load", function() {
             $('body').addClass('loaded');
         });
-
-
-
     </script>
-</body>
-</html>
+    </body>
+
+    </html>
