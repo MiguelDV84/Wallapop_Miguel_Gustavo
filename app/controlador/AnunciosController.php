@@ -98,4 +98,40 @@ class AnunciosController
             }
         }
     }
+
+    function misAnuncios(){
+
+
+
+        
+        $idUsuario =$_SESSION['idUsuario'];
+        $anuncioDAO = new AnuncioDAO(ConexionBD::conectar());
+
+        $array_anuncios = $anuncioDAO->getAnunciosIdUsuario(11);
+
+        foreach($array_anuncios as $anuncio){
+            $id_anuncio_foto = $anuncio->getId();
+
+            $array_fotos_principales[] = $anuncioDAO->getFotoPrincipal($id_anuncio_foto);
+        }
+        require 'app/vistas/misAnuncios.php';
+    }
+
+    function editarAnuncio()
+    {
+
+        //Obtenemos el id del anuncio
+        $idAnuncio = $_GET['idAnuncio'];
+
+        //Instanciamos un anuncioDAO
+        $anuncioDAO = new AnuncioDAO(ConexionBD::conectar());
+        //Obtenemos el anuncio por id
+        $anuncio = $anuncioDAO->getAnunciosIdAnuncio($idAnuncio);
+        //Obtenemos las imagenes de la tabla fotografias del anuncio de la descripción
+        $fotos = $anuncioDAO->getImagenesAnuncios($idAnuncio);
+        //Para mostrar el usuario que ha subido el producto
+        $usuario = $anuncioDAO->getUsuarioAnuncio($idAnuncio);
+        require 'app/vistas/editarAnuncio.php';
+    }
+
 }

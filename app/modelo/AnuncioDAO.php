@@ -48,14 +48,23 @@ class AnuncioDAO {
         if (!$stmt = $this->conn->prepare($query)) {
             die("Error al ejecutar la QUERY" . $this->conn->error);
         }
-
+    
         $stmt->bind_param('i', $idUser);
         $stmt->execute();
-
+    
         $result = $stmt->get_result();
-        $anuncio = $result->fetch_object('Anuncio');
-
-        return $anuncio;
+        $anuncios = array();
+        while ($row = $result->fetch_assoc()) {
+            $anuncio = new Anuncio();
+            $anuncio->setId($row['id']);
+            $anuncio->setPrecio($row['precio']);
+            $anuncio->setTitulo($row['titulo']);
+            $anuncio->setDescripcion($row['descripcion']);
+            $anuncio->setFecha($row['fecha']);
+            $anuncios[] = $anuncio;
+        }
+    
+        return $anuncios;
     }
 
     public function getAnunciosIdAnuncio($idAnuncio) {

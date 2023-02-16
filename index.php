@@ -22,6 +22,8 @@ $map = array(
     "logout" => array("controller" => "UsuariosController", "method" => "logout", "publica" => false),
     "comprobar_email" => array("controller" => "UsuariosController", "method" =>"comprobar_email", "publica" => true),
     "subir_anuncio" => array("controller" => "AnunciosController", "method" =>"subirAnuncio", "publica" => false),
+    "mis_anuncios" => array("controller" => "AnunciosController", "method" =>"misAnuncios", "publica" => false),
+    "editar_anuncio" => array("controller" => "AnunciosController", "method" =>"editarAnuncio", "publica" => false)
 );
 
 /* PARSEO DE LA RUTA */

@@ -10,11 +10,11 @@ require 'app/vistas/plantilla.php';
     <div class="row mb-4">
         <h2 class="col-12 tm-text-primary">Descripción del anuncio </h2>
     </div>
-    <div class="row tm-mb-90">            
+    <div class="row tm-mb-90">
         <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 
-                
+
                 <div class="carousel-inner">
 
 
@@ -22,13 +22,13 @@ require 'app/vistas/plantilla.php';
                     <?php
                     $number_words = array('First', 'Second', 'Third', 'Fourth'); //crea el array con los nombres en inglés
                     $counter = 1; //inicializa el contador
-                    foreach ($fotos as $foto):
+                    foreach ($fotos as $foto) :
                         $alt = $number_words[$counter - 1] . " slide"; //accede al nombre en inglés correspondiente
-                        ?>
-                    <div class="carousel-item <?php echo ($counter === 1) ? 'active' : ''; ?>" id="carrusel" >
+                    ?>
+                        <div class="carousel-item <?php echo ($counter === 1) ? 'active' : ''; ?>" id="carrusel">
                             <img class="d-block w-100" src="web/img/<?= $foto->getFoto(); ?>" alt="<?= $alt; ?>">
                         </div>
-                        <?php
+                    <?php
                         $counter++; //incrementa el contador
                     endforeach;
                     ?>
@@ -51,7 +51,7 @@ require 'app/vistas/plantilla.php';
                 <p class="mb-4">
                     Este anuncio a sido subido por: <a href="#"><?= $usuario->getEmail(); ?></a>
                 </p><br>
-                
+
                 <!--
                 <div class="mb-4 d-flex flex-wrap">
                     <div class="mr-4 mb-2">
@@ -81,7 +81,18 @@ require 'app/vistas/plantilla.php';
                     <div class="form-group tm-text-right">
                         <button type="submit" class="btn btn-primary">Chatear con <?= $usuario->getEmail(); ?></button>
                     </div>
-                </form>                
+                    <?php
+                    $idUsuario = $_SESSION['idUsuario'];
+                    $idAnunciante = $anuncio->getId_usuario();
+                    if (isset($idUsuario) && $idUsuario === $idAnunciante) :
+                    ?>
+
+                        <div class="form-group tm-text-right">
+                            <a class="btn btn-primary" href="index.php?action=editar_anuncio&idAnuncio=<?= $_GET['idAnuncio'] ?>">Editar anuncio</a>
+                        </div>
+                    <?php endif; ?>
+
+                </form>
             </div>
         </div>
     </div>
@@ -95,16 +106,16 @@ require 'app/vistas/plantilla.php';
         <?php
         $anuncios_inicio = ($pagina - 1) * $anuncios_por_pagina;
         $anuncios_fin = $anuncios_inicio + $anuncios_por_pagina;
-        for ($i = $anuncios_inicio; $i < $anuncios_fin && $i < count($array_anuncios); $i++):
+        for ($i = $anuncios_inicio; $i < $anuncios_fin && $i < count($array_anuncios); $i++) :
             $anuncio = $array_anuncios[$i];
-            ?>
+        ?>
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
                     <img src="web/img/<?= $anuncio->getImagen() ?>" alt="Image" class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
                         <h2><?= $anuncio->getTitulo() ?></h2>
                         <a href="index.php?action=descripcion&idAnuncio=<?= $anuncio->getId(); ?>">View more</a>
-                    </figcaption>                    
+                    </figcaption>
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">
                     <span class="tm-text-gray-light"><?= $anuncio->getFecha(); ?></span>
@@ -119,14 +130,15 @@ require 'app/vistas/plantilla.php';
             <div class="tm-paging d-flex">
                 <?php
                 $total_paginas = ceil(count($array_anuncios) / $anuncios_por_pagina);
-                for ($pagina = 1; $pagina <= $total_paginas; $pagina++):
-                    ?>
+                for ($pagina = 1; $pagina <= $total_paginas; $pagina++) :
+                ?>
                     <a href="index.php?action=descripcion&pagina=<?= $pagina ?>" class="<?= $pagina === $num_pagina ? 'active tm-paging-link' : 'tm-paging-link' ?>">
                         <?= $pagina ?>
                     </a>
-                <?php endfor; ?>            </div>
+                <?php endfor; ?>
+            </div>
             <a href="javascript:void(0);" class="btn btn-primary tm-btn-next">Próxima página</a>
-        </div>            
+        </div>
     </div>
 </div>
 </div> <!-- container-fluid, tm-container-content -->
@@ -171,14 +183,14 @@ require 'app/vistas/plantilla.php';
 
 <script src="web/js/plugins.js"></script>
 <script>
-    $(window).on("load", function () {
+    $(window).on("load", function() {
         $('body').addClass('loaded');
     });
     $('.carousel').carousel({
         interval: 2000
     })
 
-    $('a i.fa-heart').click(function () {
+    $('a i.fa-heart').click(function() {
         if ($(this).hasClass('fa-solid')) {
             $(this).removeClass('fa-solid');
             $(this).addClass('fa-regular');
@@ -189,4 +201,5 @@ require 'app/vistas/plantilla.php';
     });
 </script>
 </body>
+
 </html>
