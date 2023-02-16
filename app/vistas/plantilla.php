@@ -45,7 +45,9 @@
             }
 
 
+
             
+
 
             #carrusel{
 
@@ -66,10 +68,12 @@
                 object-fit: contain;
                 object-position: center;
             }
+
             
             .tm-video-item figcaption {
                 color: black;
             }
+
 
         </style>
     </head>
