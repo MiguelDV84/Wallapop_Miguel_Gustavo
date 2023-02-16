@@ -20,6 +20,18 @@ require 'app/vistas/plantilla.php';
     </div>
     <div class="row tm-mb-90">
         <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12" id="contenedor">
+            <?php
+            $number_words = array('First', 'Second', 'Third', 'Fourth'); //crea el array con los nombres en inglés
+            $counter = 1; //inicializa el contador
+            foreach ($fotos as $foto) :
+            ?>
+                <div class="container-fluid" id="">
+                    <img class="d-block w-100" src="web/img/<?= $foto->getFoto(); ?>" id="foto">
+                </div>
+            <?php
+                $counter++; //incrementa el contador
+            endforeach;
+            ?>
         </div>
         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
             <div class="tm-bg-gray tm-video-details">
@@ -54,7 +66,7 @@ require 'app/vistas/plantilla.php';
                         <h3 class="tm-text-gray-dark mb-3">Sube fotos</h3>
                         <input type="file" id="seleccionArchivos" name="foto[]" class="form-control rounded-0" onchange="previewImagen()" required multiple />
                     </div>
-                   
+
                     <div class="form-group tm-text-right">
                         <button type="submit" class="btn btn-primary">Editar Anuncio</button>
                     </div>
@@ -110,27 +122,23 @@ require 'app/vistas/plantilla.php';
         $('body').addClass('loaded');
     });
 
-    const $seleccionArchivos = document.querySelector("#seleccionArchivos"),
-        $imagenPrevisualizacion = document.querySelector("#imagenPrevisualizacion");
+    const $seleccionArchivos = document.querySelector("#seleccionArchivos");
+    const imagenes = document.querySelectorAll("#foto");
 
-    // Escuchar cuando cambie
     $seleccionArchivos.addEventListener("change", () => {
-        // Los archivos seleccionados, pueden ser muchos o uno
         const archivos = $seleccionArchivos.files;
-        // Si no hay archivos salimos de la función y quitamos la imagen
+
         if (!archivos || !archivos.length) {
-            $imagenPrevisualizacion.src = "";
+            imagenes.forEach((imagen) => {
+                imagen.src = "";
+            });
             return;
         }
-        // Ahora tomamos el primer archivo, el cual vamos a previsualizar
-        
-        for(let i = 0; i < archivos.length ; i++){
+
+        for (let i = 0; i < archivos.length; i++) {
             let cogeArchivo = archivos[i];
             let url = URL.createObjectURL(cogeArchivo);
-            let imagen = document.createElement("img");
-            imagen.src = url;
-            imagen.style = "height: 126px; width: 126px";
-            document.getElementById("contenedor").appendChild(imagen);
+            imagenes[i].src = url;
         }
     });
 </script>
