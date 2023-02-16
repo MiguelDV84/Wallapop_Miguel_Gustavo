@@ -13,30 +13,41 @@ require_once 'app/modelo/ConexionBD.php';
  *
  * @author Alumno
  */
-class AnunciosController
-{
+class AnunciosController {
 
-    function inicio()
-    {
+    function inicio() {
 
         $anuncioDAO = new AnuncioDAO(ConexionBD::conectar());
 
         //Obtengo todos los anuncios de la BD
-        $array_anuncios = $anuncioDAO->getAnuncios();
-
-        $array_fotos_principales = array();
-
-        foreach ($array_anuncios as $anuncio) {
-            $id_anuncio_foto = $anuncio->getId();
-
-            $array_fotos_principales[] = $anuncioDAO->getFotoPrincipal($id_anuncio_foto);
+//        $array_anuncios = $anuncioDAO->getAnuncios();
+//
+//        $array_fotos_principales = array();
+//
+//        foreach ($array_anuncios as $anuncio) {
+//            $id_anuncio_foto = $anuncio->getId();
+//
+//            $array_fotos_principales[] = $anuncioDAO->getFotoPrincipal($id_anuncio_foto);
+//        }
+        // Obtener el número de página a mostrar
+        if (isset($_GET['pagina'])) {
+            $num_pagina = $_GET['pagina'];
+        } else {
+            $num_pagina = 1;
+            
         }
-        //incluimos la vista
+
+        // Calcular el inicio de la página actual
+        $inicio = ($num_pagina - 1) * 5;
+
+        // Obtener los siguientes 5 anuncios
+        $array_Paginas = $anuncioDAO->paginacionAnuncios($inicio);
+        
+        
         require 'app/vistas/inicio.php';
     }
 
-    function descripcion()
-    {
+    function descripcion() {
 
         $anuncioDAO = new AnuncioDAO(ConexionBD::conectar());
 
@@ -66,18 +77,15 @@ class AnunciosController
         require 'app/vistas/descripcion.php';
     }
 
-    function subirAnuncio()
-    {
+    function subirAnuncio() {
         require 'app/vistas/subirAnuncio.php';
     }
 
-    function subirAnuncioLogin()
-    {
+    function subirAnuncioLogin() {
         require 'app/vistas/subirAnuncioALogin.php';
     }
 
-    function subirAnuncioAccion()
-    {
+    function subirAnuncioAccion() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $anuncio = new Anuncio();
             $foto = new Foto();
@@ -89,7 +97,7 @@ class AnunciosController
             $principal = 0;
             $anuncioDAO = new AnuncioDAO(ConexionBD::conectar());
             $idAnuncio = $anuncioDAO->insertarAnuncio($precio, $titulo, $descripcion, $_SESSION['idUsuario']);
-            
+
             foreach ($_FILES['foto']['tmp_name'] as $key => $tmp_name) {
                 $file_name[] = $_FILES['foto']['name'][$key];
                 $file_size = $_FILES['foto']['size'][$key];
@@ -103,4 +111,5 @@ class AnunciosController
             }
         }
     }
+
 }

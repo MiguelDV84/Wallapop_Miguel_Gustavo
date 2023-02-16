@@ -8,11 +8,13 @@
             <i class="fas fa-search"></i>
         </button>
     </form>
+
 </div>
 <?php if (isset($_SESSION['email'])): ?>
+
     <strong
         style="
-        font-size:26px; 
+        font-size:26px;
         float: right;
         margin: 20px;
         margin-right: 350px"
@@ -30,34 +32,22 @@
     </div>
     <div class="row tm-mb-90 tm-gallery">
         <!-- Bucle escribe anuncios en lan vista -->
-        <?php
-        foreach ($array_anuncios as $anuncio):
-            //foreach ($array_fotos_principales as $foto):
-            ?>
-
+        <?php foreach ($array_Paginas as $anuncio): ?>
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
-
-
-                    <img src="web/img/<?= $anuncio->getImagen(); ?>" alt="Image" class="img-fluid">
-
+                    <img src="web/img/<?= $anuncio['imagen']; ?>" alt="Image" class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
-                        <h2><?= $anuncio->getTitulo() ?></h2>
-                        <a href="index.php?action=descripcion&idAnuncio=<?= $anuncio->getId(); ?>">View more</a>
-
-                    </figcaption>                    
+                        <h2><?= $anuncio['titulo'] ?></h2>
+                        <a href="index.php?action=descripcion&idAnuncio=<?= $anuncio['id']; ?>">View more</a>
+                    </figcaption>
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">
-                    <span class="tm-text-gray-light"><?= $anuncio->getFecha() ?></span>
-                    <span><?= $anuncio->getPrecio() ?>.00 €</span>
-
+                    <span class="tm-text-gray-light"><?= $anuncio['fecha'] ?></span>
+                    <span><?= $anuncio['precio'] ?>.00 €</span>
                 </div>
-                <p><?= $anuncio->getDescripcion() ?></p>
+                <p><?= $anuncio['descripcion'] ?></p>
             </div>
-    <?php
-endforeach;
-?>
-        <!--Fin del bucle -->
+        <?php endforeach; ?>        <!--Fin del bucle -->
 
         <!--CONTENEDOR DE EJEMPLO-->
         <!--
@@ -79,14 +69,18 @@ endforeach;
         <!-- row -->
         <div class="row tm-mb-90">
             <div class="col-12 d-flex justify-content-between align-items-center tm-paging-col">
-                <a href="javascript:void(0);" class="btn btn-primary tm-btn-prev mb-2 disabled">Anterior</a>
+                <?php if($num_pagina == 1): ?>
+                <a href="index.php?action=inicio&pagina=<?php echo $num_pagina - 1; ?>" class="btn btn-primary tm-btn-prev mb-2 disabled" id="pagina">Anterior</a>
+                <?php else: ?>
+                <a href="index.php?action=inicio&pagina=<?php echo $num_pagina - 1; ?>" class="btn btn-primary tm-btn-prev mb-2" id="pagina">Anterior</a>
+                <?php endif; ?>
                 <div class="tm-paging d-flex">
-                    <a href="javascript:void(0);" class="active tm-paging-link">1</a>
-                    <a href="javascript:void(0);" class="tm-paging-link">2</a>
-                    <a href="javascript:void(0);" class="tm-paging-link">3</a>
-                    <a href="javascript:void(0);" class="tm-paging-link">4</a>
+                    <!--                    <a href="javascript:void(0);" class="active tm-paging-link">1</a>
+                                        <a href="javascript:void(0);" class="tm-paging-link">2</a>
+                                        <a href="javascript:void(0);" class="tm-paging-link">3</a>
+                                        <a href="javascript:void(0);" class="tm-paging-link">4</a>-->
                 </div>
-                <a href="javascript:void(0);" class="btn btn-primary tm-btn-next">Próxima página</a>
+                <a href="index.php?action=inicio&pagina=<?php echo $num_pagina + 1; ?>" class="btn btn-primary tm-btn-next" id="pagina">Próxima página</a>
             </div>            
         </div>
     </div> <!-- container-fluid, tm-container-content -->

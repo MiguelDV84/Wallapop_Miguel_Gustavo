@@ -106,21 +106,18 @@ class AnuncioDAO {
         return $foto;
     }
 
-    function paginacionAnuncios($num_pagina, $anuncios_por_pagina) {
-        // Calcular el inicio de la pagina actual
+    function paginacionAnuncios($inicio) {
         // Realizar la consulta a la base de datos
-        $query = "SELECT * FROM anuncios LIMIT $num_pagina, $anuncios_por_pagina";
+        $query = "SELECT * FROM anuncios LIMIT $inicio, 8";
         if (!$result = $this->conn->query($query)) {
             die("Error al ejecutar la QUERY" . $this->conn->error);
         }
-
 
         // Almacenar los resultados de la consulta en un array
         $array_anuncios = [];
         while ($row = mysqli_fetch_array($result)) {
             $array_anuncios[] = $row;
         }
-
 
         // Devolver el array de anuncios
         return $array_anuncios;
