@@ -52,6 +52,7 @@ if (!isset($_SESSION['idUsuario']) && isset($_COOKIE['uid'])) {
     } else {
         //Iniciamos sesión
         $_SESSION['email'] = $usuario->getEmail();
+        $_SESSION['nombre'] = $usuario->getNombre();
         $_SESSION['idUsuario'] = $usuario->getId();
         $_SESSION['foto'] = $usuario->getFoto();
         

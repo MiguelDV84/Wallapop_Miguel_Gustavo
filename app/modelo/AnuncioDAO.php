@@ -1,17 +1,20 @@
 <?php
 
-class AnuncioDAO {
+class AnuncioDAO
+{
 
     private $conn;
 
-    public function __construct($conn) {
+    public function __construct($conn)
+    {
         if (!$conn instanceof mysqli) { //Comprueba si $conn es un objeto de la clase mysqli
             return false;
         }
         $this->conn = $conn;
     }
 
-    public function getAnuncios() {
+    public function getAnuncios()
+    {
         $query = "SELECT * FROM anuncios ORDER BY fecha DESC";
         if (!$result = $this->conn->query($query)) {
             die("Error al ejecutar la QUERY" . $this->conn->error);
@@ -23,7 +26,8 @@ class AnuncioDAO {
         return $array_anuncios;
     }
 
-    public function getImagenesAnuncios($idAnuncio) {
+    public function getImagenesAnuncios($idAnuncio)
+    {
         $sql = "SELECT * FROM fotografias WHERE id_anuncio = ?";
         if (!$stmt = $this->conn->prepare($sql)) {
             die("Error al preparar la SQL " . $this->conn->error);
@@ -43,15 +47,16 @@ class AnuncioDAO {
         return $fotos;
     }
 
-    public function getAnunciosIdUsuario($idUser) {
+    public function getAnunciosIdUsuario($idUser)
+    {
         $query = "SELECT * FROM anuncios WHERE id_usuario = ?";
         if (!$stmt = $this->conn->prepare($query)) {
             die("Error al ejecutar la QUERY" . $this->conn->error);
         }
-    
+
         $stmt->bind_param('i', $idUser);
         $stmt->execute();
-    
+
         $result = $stmt->get_result();
         $anuncios = array();
         while ($row = $result->fetch_assoc()) {
@@ -63,11 +68,12 @@ class AnuncioDAO {
             $anuncio->setFecha($row['fecha']);
             $anuncios[] = $anuncio;
         }
-    
+
         return $anuncios;
     }
 
-    public function getAnunciosIdAnuncio($idAnuncio) {
+    public function getAnunciosIdAnuncio($idAnuncio)
+    {
         $query = "SELECT * FROM anuncios WHERE id = ?";
         if (!$stmt = $this->conn->prepare($query)) {
             die("Error al ejecutar la QUERY" . $this->conn->error);
@@ -82,7 +88,8 @@ class AnuncioDAO {
         return $anuncio;
     }
 
-    public function getUsuarioAnuncio($idAnuncio) {
+    public function getUsuarioAnuncio($idAnuncio)
+    {
         $sql = "SELECT usuarios.*
             FROM anuncios
             INNER JOIN usuarios ON anuncios.id_usuario = usuarios.id
@@ -100,7 +107,8 @@ class AnuncioDAO {
         return $usuarioAnuncio;
     }
 
-    function getFotoPrincipal($idAnuncio) {
+    function getFotoPrincipal($idAnuncio)
+    {
         $query = "SELECT * FROM fotografias WHERE id_anuncio = ? and principal = 1";
         if (!$stmt = $this->conn->prepare($query)) {
             die("Error al ejecutar la QUERY" . $this->conn->error);
@@ -115,14 +123,13 @@ class AnuncioDAO {
         return $foto;
     }
 
-    function paginacionAnuncios($num_pagina, $anuncios_por_pagina) {
-        // Calcular el inicio de la pagina actual
+    function paginacionAnuncios($inicio)
+    {
         // Realizar la consulta a la base de datos
-        $query = "SELECT * FROM anuncios LIMIT $num_pagina, $anuncios_por_pagina";
+        $query = "SELECT * FROM anuncios ORDER BY fecha DESC LIMIT $inicio, 8";
         if (!$result = $this->conn->query($query)) {
             die("Error al ejecutar la QUERY" . $this->conn->error);
         }
-
 
         // Almacenar los resultados de la consulta en un array
         $array_anuncios = [];
@@ -130,12 +137,11 @@ class AnuncioDAO {
             $array_anuncios[] = $row;
         }
 
-
         // Devolver el array de anuncios
         return $array_anuncios;
     }
-
-    function insertarAnuncio($precio, $titulo, $descripcion, $idUsuario) {
+    function insertarAnuncio($precio, $titulo, $descripcion, $idUsuario)
+    {
         $query = "INSERT INTO anuncios (precio, titulo, descripcion, id_usuario) VALUES (?, ?, ?, ?)";
         if (!$stmt = $this->conn->prepare($query)) {
             die("Error al ejecutar la QUERY" . $this->conn->error);
@@ -160,5 +166,4 @@ class AnuncioDAO {
         }
         return $stmt->insert_id;
     }
-
 }

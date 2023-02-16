@@ -22,16 +22,29 @@ class AnunciosController
         $anuncioDAO = new AnuncioDAO(ConexionBD::conectar());
 
         //Obtengo todos los anuncios de la BD
-        $array_anuncios = $anuncioDAO->getAnuncios();
-
-        $array_fotos_principales = array();
-
-        foreach ($array_anuncios as $anuncio) {
-            $id_anuncio_foto = $anuncio->getId();
-
-            $array_fotos_principales[] = $anuncioDAO->getFotoPrincipal($id_anuncio_foto);
+        //        $array_anuncios = $anuncioDAO->getAnuncios();
+        //
+        //        $array_fotos_principales = array();
+        //
+        //        foreach ($array_anuncios as $anuncio) {
+        //            $id_anuncio_foto = $anuncio->getId();
+        //
+        //            $array_fotos_principales[] = $anuncioDAO->getFotoPrincipal($id_anuncio_foto);
+        //        }
+        // Obtener el número de página a mostrar
+        if (isset($_GET['pagina'])) {
+            $num_pagina = $_GET['pagina'];
+        } else {
+            $num_pagina = 1;
         }
-        //incluimos la vista
+
+        // Calcular el inicio de la página actual
+        $inicio = ($num_pagina - 1) * 5;
+
+        // Obtener los siguientes 5 anuncios
+        $array_Paginas = $anuncioDAO->paginacionAnuncios($inicio);
+
+
         require 'app/vistas/inicio.php';
     }
 
@@ -66,7 +79,7 @@ class AnunciosController
         require 'app/vistas/descripcion.php';
     }
 
- 
+
 
 
     function subirAnuncio()
@@ -99,17 +112,18 @@ class AnunciosController
         }
     }
 
-    function misAnuncios(){
+    function misAnuncios()
+    {
 
 
 
-        
-        $idUsuario =$_SESSION['idUsuario'];
+
+        $idUsuario = $_SESSION['idUsuario'];
         $anuncioDAO = new AnuncioDAO(ConexionBD::conectar());
 
         $array_anuncios = $anuncioDAO->getAnunciosIdUsuario(11);
 
-        foreach($array_anuncios as $anuncio){
+        foreach ($array_anuncios as $anuncio) {
             $id_anuncio_foto = $anuncio->getId();
 
             $array_fotos_principales[] = $anuncioDAO->getFotoPrincipal($id_anuncio_foto);
@@ -133,5 +147,4 @@ class AnunciosController
         $usuario = $anuncioDAO->getUsuarioAnuncio($idAnuncio);
         require 'app/vistas/editarAnuncio.php';
     }
-
 }

@@ -96,6 +96,7 @@ class UsuariosController
             } else {
                 //Datos correctos
                 $_SESSION['email'] = $usuario->getEmail();
+                $_SESSION['nombre'] = $usuario->getNombre();
                 $_SESSION['idUsuario'] = $usuario->getId();
                 $_SESSION['foto'] = $usuario->getFoto();
                 //Guardado de cookie. Generamos un uid aleatorio y lo guardamos en la BD y en la cookie
